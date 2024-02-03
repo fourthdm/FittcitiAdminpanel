@@ -1,0 +1,201 @@
+<div class="content-wrapper">
+    <div class="container">
+        <br>
+        <div class="text-center">
+            <h1>User's Data</h1>
+        </div>
+        <br>
+        <div class="text-end">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                ADD New User <i class="fa-regular fa-plus"></i>
+            </button>
+        </div>
+        <br>
+
+        <div class="">
+            <table class="table  table-responsive">
+                <thead>
+                    <tr>
+                        <th scope="col"> <b>User Id </b> </th>
+                        <th scope="col"> <b>User Name </b> </th>
+                        <th scope="col"> <b>Address </b> </th>
+                        <th scope="col"> <b>Email Id </b> </th>
+                        <th scope="col"> <b>Order Id </b> </th>
+                        <th scope="col"> <b>Product Id </b> </th>
+                        <th scope="col"> <b>Date </b> </th>
+                        <th scope="col"> <b>Edit User </b> </th>
+                        <th scope="col"> <b>Delete User</b> </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of Allusers | paginate: { itemsPerPage: 12, currentPage: pro }, let i =index">
+                        <td>{{u.user_id}}</td>
+                        <td>{{u.username}}</td>
+                        <td>{{u.address}}</td>
+                        <td>{{u.emailid}}</td>
+                        <td>{{u.order_id}}</td>
+                        <td>{{u.product_id}}</td>
+                        <td>{{u.date | date:'d/MMM/yyyy'}}</td>
+                        <td> <button type="button" class="btn btn-info" (click)="updateuser()" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal2">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button></td>
+                        <td><button class="btn btn-danger" type="button" (click)="delete(u['id'])"
+                                class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
+                    </tr>
+                    <div class="text-center">
+                        <pagination-controls (pageChange)=" pro = $event "></pagination-controls>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal For ADD Category -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">ADD New User</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="adduser" (submit)="addusers()">
+                            <div class="col-md-12">
+                                <label for="username">UserName:</label>
+                                <input type="text" name="username" class="form-control" id="username"
+                                    formControlName="username" value="" placeholder="Enter username" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="address">address:</label>
+                                <input type="text" name="address" class="form-control" id="address"
+                                    formControlName="address" value="" placeholder="Enter address" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="emailid">emailid:</label>
+                                <input type="text" name="emailid" class="form-control" id="emailid"
+                                    formControlName="emailid" value="" placeholder="Enter emailid" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="phone_no">Phone No:</label>
+                                <input type="text" name="phone_no" class="form-control" id="phone_no"
+                                    formControlName="phone_no" value="" placeholder="Enter phone_no" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="order_id">Order Id:</label>
+                                <input type="text" name="order_id" class="form-control" id="order_id"
+                                    formControlName="order_id" value="" placeholder="Enter Order Id" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="product_id">Product Id:</label>
+                                <input type="text" name="product_id" class="form-control" id="product_id"
+                                    formControlName="product_id" value="" placeholder="Enter Product Id" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="product_id">Product_id:</label>
+                                <input type="text" name="product_id" class="form-control" id="product_id"
+                                    formControlName="product_id" value="" placeholder="Enter Product_id" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="date">Date:</label>
+                                <input type="text" name="date" class="form-control" id="date" formControlName="date"
+                                    value="" placeholder="Enter Date" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="orderdetails_id">Orderdetails_id:</label>
+                                <input type="text" name="orderdetails_id" class="form-control" id="orderdetails_id"
+                                    formControlName="orderdetails_id" value="" placeholder="Enter orderdetails_id"
+                                    required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-success">ADD User</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+
+        <!-- Modal for Edit Category -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+            *ngFor="let u of Allusers, let i =index">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">EDIT User </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form [formGroup]="edituser" (submit)="updateuser()">
+                            <div class="col-md-12">
+                                <label for="username">username:</label>
+                                <input type="text" name="username" class="form-control" id="username"
+                                    formControlName="username" value="" placeholder="Enterusername" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="address">address:</label>
+                                <input type="text" name="address" class="form-control" id="address"
+                                    formControlName="address" value="" placeholder="Enter address" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="emailid">emailid:</label>
+                                <input type="text" name="emailid" class="form-control" id="emailid"
+                                    formControlName="emailid" value="" placeholder="Enter emailid" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="phone_no">Total Discount:</label>
+                                <input type="text" name="phone_no" class="form-control" id="phone_no"
+                                    formControlName="phone_no" value="" placeholder="Enter phone_no " required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="order_id">Total Amount:</label>
+                                <input type="text" name="order_id" class="form-control" id="order_id"
+                                    formControlName="order_id" value="" placeholder="Enter order_id " required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="product_id">Satus Payment Amount:</label>
+                                <input type="text" name="product_id" class="form-control" id="product_id"
+                                    formControlName="product_id" value="" placeholder="Enter Statuspaymentamount "
+                                    required>
+                            </div>
+
+
+
+                            <div class="col-md-12">
+                                <label for="product_id">Product_id:</label>
+                                <input type="text" name="product_id" class="form-control" id="product_id"
+                                    formControlName="product_id" value="" placeholder="Enter Product_id" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="date">Delivery Date:</label>
+                                <input type="text" name="date" class="form-control" id="date" formControlName="date"
+                                    value="" placeholder="Enter Delivery Date" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="orderdetails_id">Orderdetails_id:</label>
+                                <input type="text" name="orderdetails_id" class="form-control" id="orderdetails_id"
+                                    formControlName="orderdetails_id" value="" placeholder="Enter orderdetails_id"
+                                    required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-success">Edit User</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- modal end fro edit Category -->
+    </div>
+</div>

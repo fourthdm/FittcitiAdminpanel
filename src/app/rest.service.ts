@@ -1,0 +1,119 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RestService {
+
+  constructor(private _http: HttpClient) { }
+
+  url = "http://localhost:4040";
+
+
+  addProd(data: any) {
+    return this._http.post(this.url + '/Prod', data);
+  }
+
+  GetProd() {
+    return this._http.get(this.url + '/getProd');
+  }
+
+  addproducts(data: any) {
+    return this._http.post(this.url + '/AddProduct', data);
+  }
+
+  getproducts() {
+    return this._http.get(this.url + '/Allproducts');
+  }
+
+  getproductbyCategoryandBrand(data: any) {
+    // return this._http.post(this.url + '/categoryBrand', data);
+  }
+
+  getProductbycategory(data: any) {
+    return this._http.post(this.url + '/getproductbycategoryid', data);
+  }
+
+  getProductbyBrand(data: any) {
+    return this._http.post(this.url + "/getproductbybrandid", data);
+  }
+
+  EditProduct(Product_id: number, data: any) {
+    return this._http.put(this.url + "/UpdateProducts/" + Product_id, data);
+  }
+
+  DeleteProducts(Product_id: number) {
+    return this._http.delete(this.url + '/Deleteproducts/' + Product_id);
+  }
+  //Product API Ends
+
+  //Categories Api 
+  AllCategory() {
+    return this._http.get(this.url + '/Categories');
+  }
+
+  addcategory(data: any) {
+    return this._http.post(this.url + '/AddCategories', data);
+  }
+
+  editCategory(data: any) {
+    return this._http.put(this.url + '/UpdateCategories/' + data.Category_id, data);
+  }
+
+  DeleteCategory(Category_id: number) {
+    return this._http.delete(this.url + '/DeleteCategory/' + Category_id);
+  }
+  //Catgeories API ENDS
+
+  //All Brands API's
+  AllBrand() {
+    return this._http.get(this.url + '/Allbrand');
+  }
+
+  addbrands(data: any) {
+    return this._http.post(this.url + '/addBrand', data);
+  }
+
+  editbrand(data: any) {
+    return this._http.put(this.url + '/updateBrand/' + data.Brand_id, data);
+  }
+
+  Deletebrand(Brand_id: number) {
+    return this._http.delete(this.url + '/deletebrand/' + Brand_id);
+  }
+  // End Brands APi
+
+  url2 = "http://localhost:4000";
+
+  Addnewproduct(data: any) {
+    return this._http.post(this.url2 + '/addproducts', data);
+  }
+
+  Productsss() {
+    return this._http.get(this.url2 + '/products');
+  }
+
+  Updateproductwithnewdatbase(data: any) {
+    return this._http.put(this.url2 + '/Updateproduct/' + data.product_id, data)
+  }
+
+  DeletenewdatabaseProducts(product_id:any){
+    return this._http.delete(this.url2 + '/Deleteproduct/' + product_id)
+  }
+
+
+  Deleteorders(){
+    return this._http.delete(this.url2 + '/Deleteorders')
+  }
+
+  orders() {
+    return this._http.get(this.url2 + '/carts');
+  }
+
+  users() {
+    return this._http.get(this.url2 + '/Alluser')
+  }
+}
+
+

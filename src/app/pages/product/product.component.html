@@ -1,0 +1,473 @@
+<div class="content-wrapper">
+    <!-- <div class="container">
+    <div class="row">
+        <div class="col-md-6" *ngFor="let p of Allproducts">
+            <div class="card">
+                <div class="card-body" >
+                    <img [src]="p.Image" alt="">
+                    <h2>{{p.productname}}</h2>
+                    <h5>{{p.Category_Name}}</h5>
+                    <h6>{{p.Brand_Name}}</h6>
+                    <h4>{{p.price}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+    <!-- <br>
+<div class="container">
+    All Category Names:
+    <div class="card" *ngFor="let c of AllCategory">
+        <div class="card-body">
+            <h5>{{c.Category_Name}}</h5>
+        </div>
+    </div>
+</div>
+<br> -->
+
+    <div class="container">
+        <br>
+        <div class="text-end">
+            <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+            Edit Product <i class="fa-regular fa-plus"></i>
+        </button> -->
+        </div>
+        <br>
+
+        <!-- Modal For edit Products -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="EditProductForm" (submit)="updateproduct()">
+
+                            <div class="col-md-12">
+                                <label for="productname">Product Name:</label>
+                                <input type="text" name="productname" class="form-control" id="productname"
+                                    formControlName="productname" value="" placeholder="Enter Product Name " required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="description">description :</label>
+                                <textarea type="text" name="description" class="form-control" id="description"
+                                    formControlName="description" value="" placeholder="Enter description" required>
+                           </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="benefits">Benefits :</label>
+                                <textarea type="text" name="benefits" class="form-control" id="benefits"
+                                    formControlName="benefits" value="" placeholder="Enter benefits" required>
+                            </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="ingredients">ingredients</label>
+                                <textarea type="text" name="ingredients" class="form-control" id="ingredients"
+                                    formControlName="ingredients" value="" placeholder="Enter ingredients" required>
+                           </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="price">price:</label>
+                                <input type="number" name="price" class="form-control" id="price"
+                                    formControlName="price" placeholder="Enter price." required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="discount">Discount:</label>
+                                <input type="number" name="discount" class="form-control" id="discount"
+                                    formControlName="discount" placeholder="Enter price." required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="pricewithdiscount">Pricewithdiscount:</label>
+                                <input type="number" name="pricewithdiscount" class="form-control"
+                                    id="pricewithdiscount" formControlName="pricewithdiscount"
+                                    placeholder="Enter price." required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="weight">Weight:</label>
+                                <input type="text" name="weight" class="form-control" id="weight"
+                                    formControlName="weight" placeholder="Enter weight of Product" required>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <label for="image">image :</label>
+                                <input type="text" name="image" class="form-control" id="image" formControlName="image"
+                                    value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="mainimage">Mainimage :</label>
+                                <input type="text" name="mainimage" class="form-control" id="mainimage"
+                                    formControlName="mainimage" value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="backimage">Backimage :</label>
+                                <input type="text" name="backimage" class="form-control" id="backimage"
+                                    formControlName="backimage" value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="tableimage">Tableimage :</label>
+                                <input type="text" name="tableimage" class="form-control" id="tableimage"
+                                    formControlName="tableimage" value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="category_id">Category ID :</label>
+                                <input type="number" name="category_id" class="form-control" id="category_id"
+                                    formControlName="category_id" value="" placeholder="Enter Category id" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="brand_id">Brand ID :</label>
+                                <input type="number" name="brand_id" class="form-control" id="brand_id"
+                                    formControlName="brand_id" value="" placeholder="Enter Brand id" required>
+                            </div>
+
+                            <br>
+                            <button type="submit" class="btn btn-success">Edit Product</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+
+        <div class="text-start">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add New Product <i class="fa-regular fa-plus"></i>
+            </button>
+        </div>
+        <br>
+
+        <!-- Modal For ADD Products -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <form [formGroup]="AddProductForm" (submit)="ProductAdd()" class="row g-3 needs-validation"
+                            novalidate>
+                            <div class="col-md-12">
+                                <label for="productname">Product Name:</label>
+                                <input type="text" name="productname" class="form-control" id="productname"
+                                    formControlName="productname" value="" placeholder="Enter Product Name " required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="description">description :</label>
+                                <textarea type="text" name="description" class="form-control" id="description"
+                                    formControlName="description" value="" placeholder="Enter description" required>
+                           </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="benefits">Benefits :</label>
+                                <textarea type="text" name="benefits" class="form-control" id="benefits"
+                                    formControlName="benefits" value="" placeholder="Enter benefits" required>
+                            </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="ingredients">ingredients</label>
+                                <textarea type="text" name="ingredients" class="form-control" id="ingredients"
+                                    formControlName="ingredients" value="" placeholder="Enter ingredients" required>
+                           </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="price">price:</label>
+                                <input type="number" name="price" class="form-control" id="price" formControlName="price"
+                                    placeholder="Enter price." required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="discount">Discount:</label>
+                                <input type="number" name="discount" class="form-control" id="discount"
+                                    formControlName="discount" placeholder="Enter price." required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="pricewithdiscount">Pricewithdiscount:</label>
+                                <input type="number" name="pricewithdiscount" class="form-control" id="pricewithdiscount"
+                                    formControlName="pricewithdiscount" placeholder="Enter price." required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="weight">Weight:</label>
+                                <input type="text" name="weight" class="form-control" id="weight"
+                                    formControlName="weight" placeholder="Enter weight of Product" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="image">image :</label>
+                                <input type="text" name="image" class="form-control" id="image" formControlName="image"
+                                    value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                                <input class="form-control" type="file" id="formFileMultiple" formControlName="image" multiple>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="mainimage">Mainimage :</label>
+                                <input type="text" name="mainimage" class="form-control" id="mainimage"
+                                    formControlName="mainimage" value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="backimage">Backimage :</label>
+                                <input type="text" name="backimage" class="form-control" id="backimage"
+                                    formControlName="backimage" value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="tableimage">Tableimage :</label>
+                                <input type="text" name="tableimage" class="form-control" id="tableimage"
+                                    formControlName="tableimage" value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="category_id">Category ID :</label>
+                                <input type="number" name="category_id" class="form-control" id="category_id"
+                                    formControlName="category_id" value="" placeholder="Enter Category id" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="brand_id">Brand ID :</label>
+                                <input type="number" name="brand_id" class="form-control" id="brand_id"
+                                    formControlName="brand_id" value="" placeholder="Enter Brand id" required>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="col-12">
+                                    <button class="btn btn-success" style="color: white;" type="submit">
+                                        Add Products</button> <br> <br>
+                                </div>
+                            </div>
+                            <br><br>
+                        </form> -->
+
+
+                        <form [formGroup]="addproduct" (submit)="PrdAdd()" class="row g-3 needs-validation" novalidate>
+                            <div class="col-md-12">
+                                <label for="Product_Name">Product Name:</label>
+                                <input type="text" name="Product_Name" class="form-control" id="Product_Name"
+                                    formControlName="Product_Name" value="" placeholder="Enter Product Name " required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="Description">description :</label>
+                                <textarea type="text" name="Description" class="form-control" id="Description"
+                                    formControlName="Description" value="" placeholder="Enter description" required>
+                       </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="Benifits">Benefits :</label>
+                                <textarea type="text" name="Benifits" class="form-control" id="Benifits"
+                                    formControlName="Benifits" value="" placeholder="Enter benefits" required>
+                        </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="Ingredients">ingredients</label>
+                                <textarea type="text" name="Ingredients" class="form-control" id="Ingredients"
+                                    formControlName="Ingredients" value="" placeholder="Enter ingredients" required>
+                       </textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="Price">price:</label>
+                                <input type="number" name="Price" class="form-control" id="Price"
+                                    formControlName="Price" placeholder="Enter price." required>
+                            </div>
+
+                            <!-- <div class="col-md-12">
+                                <label for="discount">Discount:</label>
+                                <input type="number" name="discount" class="form-control" id="discount"
+                                    formControlName="discount" placeholder="Enter price." required>
+                            </div> -->
+
+                            <!-- <div class="col-md-12">
+                                <label for="pricewithdiscount">Pricewithdiscount:</label>
+                                <input type="number" name="pricewithdiscount" class="form-control"
+                                    id="pricewithdiscount" formControlName="pricewithdiscount"
+                                    placeholder="Enter price." required>
+                            </div> -->
+
+                            <div class="col-md-12">
+                                <label for="Weight">Weight:</label>
+                                <input type="text" name="Weight" class="form-control" id="Weight"
+                                    formControlName="Weight" placeholder="Enter weight of Product" required>
+                            </div>
+
+                            <div class="col-md-12">
+
+                                <div class="input-label">
+                                    <label>img</label>
+                                </div>
+                                <input type="file" class="form-control" placeholder="" formControlName="Imageurl"
+                                    multiple class="form-control" (change)="onFileChange($event)">
+                                <!-- <label for="image">image :</label>
+                            <input type="text" name="image" class="form-control" id="image" formControlName="image"
+                                value="" placeholder="Enter image" required> -->
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                                <input class="form-control" type="file" id="formFileMultiple" formControlName="image1"
+                                    multiple>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="image2">Mainimage :</label>
+                                <input type="text" name="image2" class="form-control" id="image2"
+                                    formControlName="image2" value="" placeholder="Enter image" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="image3">Backimage :</label>
+                                <input type="text" name="image3" class="form-control" id="image3"
+                                    formControlName="image3" value="" placeholder="Enter image" required>
+                            </div>
+
+                            <!-- <div class="col-md-12">
+                                <label for="tableimage">Tableimage :</label>
+                                <input type="text" name="tableimage" class="form-control" id="tableimage"
+                                    formControlName="tableimage" value="" placeholder="Enter image" required>
+                            </div> -->
+
+                            <div class="col-md-12">
+                                <label for="Category_id">Category ID :</label>
+                                <input type="number" name="Category_id" class="form-control" id="Category_id"
+                                    formControlName="Category_id" value="" placeholder="Enter Category id" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="Brand_id">Brand ID :</label>
+                                <input type="number" name="Brand_id" class="form-control" id="Brand_id"
+                                    formControlName="Brand_id" value="" placeholder="Enter Brand id" required>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="col-12">
+                                    <button class="btn btn-success" style="color: white;" type="submit">
+                                        Add Products</button> <br> <br>
+                                </div>
+                            </div>
+                            <br><br>
+                        </form>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+
+        <br>
+
+        <div class="section section-demo" id="examples">
+            <h2>Product's</h2>
+            <br>
+            <div class="row">
+                <!-- <div class="col-md-4"
+                    *ngFor="let p of Allproducts | paginate: { itemsPerPage: 9, currentPage: pro }, let i=index">
+                    <div class="card">
+                        <div class="card-body">
+                            <img [src]="p.image" width="100%" alt="">
+                            <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br><br>
+                            <h6>{{p.weight}}</h6>
+                            <h4>&#8377; {{p.price}}</h4>
+
+                            <br>
+                            <div class="text-end">
+                                <button type="button" (click)="delete(p['Product_id'])" class="btn btn-danger"><i
+                                        class="fa-regular fa-trash-can"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <pagination-controls (pageChange)="pro = $event"></pagination-controls>
+                </div> -->
+
+                <div class="col-md-6"
+                    *ngFor="let p of Products | paginate :{itemsPerPage :2 ,currentPage : pro},let i=index">
+                    <div class="card">
+                        <div class="card-body" style="overflow-y: scroll; height: 500px;">
+
+                            <button type="button" (click)="editproduct(p.product_id)" class="btn btn-info"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+
+                            <div class="text-end">
+                                <button type="button" (click)="delete(p['product_id'])" class="btn btn-danger"><i
+                                        class="fa-regular fa-trash-can"></i></button>
+                            </div>
+
+
+                            <img [src]="p.mainimage" width="100%" alt="">
+
+                            <h4 class="card-title"><b>{{p.productname}}</b></h4> <br><br>
+                            <h6>{{p.weight}}SER</h6>
+                            <h4>&#8377; {{p.price}}</h4>
+                            <p>{{p.description}}</p> <br>
+                            <b>Ingredients</b>
+                            <p>{{p.ingredients}}</p>
+                            <br>
+                            <p>{{p.benefits}}</p>
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <pagination-controls (pageChange)="pro = $event"></pagination-controls>
+                </div>
+            </div>
+
+            <!-- <div class="row">
+            <div class="col-md-10" *ngFor="let p of prod, let i=index">
+
+                <img [src]="p.Imageurl" width="100%" alt="">
+                <h4 class="card-title"><b>{{p.productname}}</b></h4> <br><br>
+                <h6>{{p.Weight}}</h6>
+                <h4>&#8377; {{p.price}}</h4>
+                <p>{{p.description}}</p> <br>
+                <p><b>Benefits :</b>{{p.Benefits}}</p>
+                <br>
+                <p><b>ingredients:</b>{{p.ingredients}}</p>
+                <br>
+                <div class="text-end">
+                    <button type="button" (click)="delete(p['Product_id'])" class="btn btn-danger"><i
+                            class="fa-regular fa-trash-can"></i></button>
+                </div>
+
+            </div>
+        </div> -->
+
+
+        </div>
+    </div> <br><br>
+</div>
