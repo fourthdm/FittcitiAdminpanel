@@ -152,6 +152,14 @@ export class RestService {
     return this._http.post(this.url3 + '/ADDProduct', data);
   }
 
+  Editproducts(data: any) {
+    return this._http.put(this.url3 + '/Updateproduct' + data.id, data);
+  }
+
+  Deleteproduct(data: any) {
+    return this._http.delete(this.url3 + '/Deleteproduct' + data.id, data);
+  }
+
   getCart() {
     return this._http.get(this.url3 + '/CartsforAdmin');
   }

@@ -44,12 +44,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form [formGroup]="EditProductForm" (submit)="updateproduct()">
+                        <form [formGroup]="Editp" (submit)="editproducts()">
 
                             <div class="col-md-12">
-                                <label for="productname">Product Name:</label>
-                                <input type="text" name="productname" class="form-control" id="productname"
-                                    formControlName="productname" value="" placeholder="Enter Product Name " required>
+                                <label for="Product_Name">Product Name:</label>
+                                <input type="text" name="Product_Name" class="form-control" id="Product_Name"
+                                    formControlName="Product_Name" value="" placeholder="Enter Product Name " required>
                             </div>
 
                             <div class="col-md-12">
@@ -74,65 +74,27 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="price">price:</label>
-                                <input type="number" name="price" class="form-control" id="price"
-                                    formControlName="price" placeholder="Enter price." required>
+                                <label for="Price">price:</label>
+                                <input type="number" name="Price" class="form-control" id="Price"
+                                    formControlName="Price" placeholder="Enter Price." required>
+                            </div>
+                        
+                            <div class="col-md-12">
+                                <label for="Weight">Weight:</label>
+                                <input type="text" name="Weight" class="form-control" id="Weight"
+                                    formControlName="Weight" placeholder="Enter weight of Product" required>
+                            </div>                
+
+                            <div class="col-md-12">
+                                <label for="Category_id">Category ID :</label>
+                                <input type="number" name="Category_id" class="form-control" id="Category_id"
+                                    formControlName="Category_id" value="" placeholder="Enter Category id" required>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="discount">Discount:</label>
-                                <input type="number" name="discount" class="form-control" id="discount"
-                                    formControlName="discount" placeholder="Enter price." required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="pricewithdiscount">Pricewithdiscount:</label>
-                                <input type="number" name="pricewithdiscount" class="form-control"
-                                    id="pricewithdiscount" formControlName="pricewithdiscount"
-                                    placeholder="Enter price." required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="weight">Weight:</label>
-                                <input type="text" name="weight" class="form-control" id="weight"
-                                    formControlName="weight" placeholder="Enter weight of Product" required>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <label for="image">image :</label>
-                                <input type="text" name="image" class="form-control" id="image" formControlName="image"
-                                    value="" placeholder="Enter image" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="mainimage">Mainimage :</label>
-                                <input type="text" name="mainimage" class="form-control" id="mainimage"
-                                    formControlName="mainimage" value="" placeholder="Enter image" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="backimage">Backimage :</label>
-                                <input type="text" name="backimage" class="form-control" id="backimage"
-                                    formControlName="backimage" value="" placeholder="Enter image" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="tableimage">Tableimage :</label>
-                                <input type="text" name="tableimage" class="form-control" id="tableimage"
-                                    formControlName="tableimage" value="" placeholder="Enter image" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="category_id">Category ID :</label>
-                                <input type="number" name="category_id" class="form-control" id="category_id"
-                                    formControlName="category_id" value="" placeholder="Enter Category id" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="brand_id">Brand ID :</label>
-                                <input type="number" name="brand_id" class="form-control" id="brand_id"
-                                    formControlName="brand_id" value="" placeholder="Enter Brand id" required>
+                                <label for="Brand_id">Brand ID :</label>
+                                <input type="number" name="Brand_id" class="form-control" id="Brand_id"
+                                    formControlName="Brand_id" value="" placeholder="Enter Brand id" required>
                             </div>
 
                             <br>
@@ -161,19 +123,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form [formGroup]="AddProductForm" (submit)="ProductAdd()" class="row g-3 needs-validation"
-                            novalidate>
+                        <form [formGroup]="Addp" (submit)="productAdd()" class="row g-3 needs-validation" novalidate>
                             <div class="col-md-12">
-                                <label for="productname">Product Name:</label>
-                                <input type="text" name="productname" class="form-control" id="productname"
-                                    formControlName="productname" value="" placeholder="Enter Product Name " required>
+                                <label for="Product_Name">Product Name:</label>
+                                <input type="text" name="Product_Name" class="form-control" id="Product_Name"
+                                    formControlName="Product_Name" value="" placeholder="Enter Product Name " required>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="description">description :</label>
+                                <label for="description">Description :</label>
                                 <textarea type="text" name="description" class="form-control" id="description"
                                     formControlName="description" value="" placeholder="Enter description" required>
-                           </textarea>
+                                </textarea>
                             </div>
 
                             <div class="col-md-12">
@@ -184,77 +145,35 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="ingredients">ingredients</label>
+                                <label for="ingredients">Ingredients</label>
                                 <textarea type="text" name="ingredients" class="form-control" id="ingredients"
                                     formControlName="ingredients" value="" placeholder="Enter ingredients" required>
                            </textarea>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="price">price:</label>
-                                <input type="number" name="price" class="form-control" id="price"
-                                    formControlName="price" placeholder="Enter price." required>
+                                <label for="Price">Price:</label>
+                                <input type="number" name="Price" class="form-control" id="Price"
+                                    formControlName="Price" placeholder="Enter price." required>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <label for="Weight">Weight:</label>
+                                <input type="text" name="Weight" class="form-control" id="Weight"
+                                    formControlName="Weight" placeholder="Enter weight of Product" required>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="discount">Discount:</label>
-                                <input type="number" name="discount" class="form-control" id="discount"
-                                    formControlName="discount" placeholder="Enter price." required>
+                                <label for="Category_id">Category ID :</label>
+                                <input type="number" name="Category_id" class="form-control" id="Category_id"
+                                    formControlName="Category_id" value="" placeholder="Enter Category id" required>
                             </div>
 
                             <div class="col-md-12">
-                                <label for="pricewithdiscount">Pricewithdiscount:</label>
-                                <input type="number" name="pricewithdiscount" class="form-control"
-                                    id="pricewithdiscount" formControlName="pricewithdiscount"
-                                    placeholder="Enter price." required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="weight">Weight:</label>
-                                <input type="text" name="weight" class="form-control" id="weight"
-                                    formControlName="weight" placeholder="Enter weight of Product" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="image">image :</label>
-                                <input type="text" name="image" class="form-control" id="image" formControlName="image"
-                                    value="" placeholder="Enter image" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                                <input class="form-control" type="file" id="formFileMultiple" formControlName="image"
-                                    multiple>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="mainimage">Mainimage :</label>
-                                <input type="text" name="mainimage" class="form-control" id="mainimage"
-                                    formControlName="mainimage" value="" placeholder="Enter image" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="backimage">Backimage :</label>
-                                <input type="text" name="backimage" class="form-control" id="backimage"
-                                    formControlName="backimage" value="" placeholder="Enter image" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="tableimage">Tableimage :</label>
-                                <input type="text" name="tableimage" class="form-control" id="tableimage"
-                                    formControlName="tableimage" value="" placeholder="Enter image" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="category_id">Category ID :</label>
-                                <input type="number" name="category_id" class="form-control" id="category_id"
-                                    formControlName="category_id" value="" placeholder="Enter Category id" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="brand_id">Brand ID :</label>
-                                <input type="number" name="brand_id" class="form-control" id="brand_id"
-                                    formControlName="brand_id" value="" placeholder="Enter Brand id" required>
+                                <label for="Brand_id">Brand ID :</label>
+                                <input type="number" name="Brand_id" class="form-control" id="Brand_id"
+                                    formControlName="Brand_id" value="" placeholder="Enter Brand id" required>
                             </div>
 
                             <div class="text-center">

@@ -1,5 +1,6 @@
 import { CSP_NONCE, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { tick } from '@angular/core/testing';
+import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/rest.service';
 
 @Component({
@@ -13,65 +14,72 @@ export class ProductComponent implements OnInit {
   Products: any[] = [];
   image: any[] = [];
   p: any[] = [];
-  AddProductForm: FormGroup;
-  EditProductForm: FormGroup;
-  addproduct: FormGroup;
+  // AddProductForm: FormGroup;
+  // EditProductForm: FormGroup;
+  // addproduct: FormGroup;
   Allproducts: any[] = [];
   AllCategory: any[] = [];
   prod: any[] = [];
+  Addp: FormGroup;
+  Editp: FormGroup;
 
   selectedproduct: any = null;
 
   constructor(private _rest: RestService) {
 
-    this.addproduct = new FormGroup({
+    this.Addp = new FormGroup({
       Product_Name: new FormControl('', [Validators.required]),
       Weight: new FormControl('', [Validators.required]),
       Price: new FormControl('', [Validators.required]),
-      Category_id: new FormControl('', [Validators.required]),
       Brand_id: new FormControl('', [Validators.required]),
-      Description: new FormControl('', [Validators.required]),
-      Ingredients: new FormControl('', [Validators.required]),
-      Benifits: new FormControl('', [Validators.required]),
-      Imageurl: new FormControl('', [Validators.required]),
-      image1: new FormControl('', [Validators.required]),
-      image2: new FormControl('', [Validators.required]),
-      image3: new FormControl('', [Validators.required])
-    })
-
-    this.AddProductForm = new FormGroup({
-      productname: new FormControl('', [Validators.required]),
+      Category_id: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       benefits: new FormControl('', [Validators.required]),
       ingredients: new FormControl('', [Validators.required]),
-      price: new FormControl('', [Validators.required]),
-      discount: new FormControl('', [Validators.required]),
-      pricewithdiscount: new FormControl('', [Validators.required]),
-      weight: new FormControl('', [Validators.required]),
-      image: new FormControl('', [Validators.required]),
-      mainimage: new FormControl('', [Validators.required]),
-      backimage: new FormControl('', [Validators.required]),
-      tableimage: new FormControl('', [Validators.required]),
-      category_id: new FormControl('', [Validators.required]),
-      brand_id: new FormControl('', [Validators.required]),
-    })
+    });
 
-    this.EditProductForm = new FormGroup({
-      product_id: new FormControl(),
-      productname: new FormControl('', [Validators.required]),
+    // this.addproduct = new FormGroup({
+    //   Product_Name: new FormControl('', [Validators.required]),
+    //   Weight: new FormControl('', [Validators.required]),
+    //   Price: new FormControl('', [Validators.required]),
+    //   Category_id: new FormControl('', [Validators.required]),
+    //   Brand_id: new FormControl('', [Validators.required]),
+    //   Description: new FormControl('', [Validators.required]),
+    //   Ingredients: new FormControl('', [Validators.required]),
+    //   Benifits: new FormControl('', [Validators.required]),
+    //   Imageurl: new FormControl('', [Validators.required]),
+    //   image1: new FormControl('', [Validators.required]),
+    //   image2: new FormControl('', [Validators.required]),
+    //   image3: new FormControl('', [Validators.required])
+    // })
+
+    // this.AddProductForm = new FormGroup({
+    //   productname: new FormControl('', [Validators.required]),
+    //   description: new FormControl('', [Validators.required]),
+    //   benefits: new FormControl('', [Validators.required]),
+    //   ingredients: new FormControl('', [Validators.required]),
+    //   price: new FormControl('', [Validators.required]),
+    //   discount: new FormControl('', [Validators.required]),
+    //   pricewithdiscount: new FormControl('', [Validators.required]),
+    //   weight: new FormControl('', [Validators.required]),
+    //   image: new FormControl('', [Validators.required]),
+    //   mainimage: new FormControl('', [Validators.required]),
+    //   backimage: new FormControl('', [Validators.required]),
+    //   tableimage: new FormControl('', [Validators.required]),
+    //   category_id: new FormControl('', [Validators.required]),
+    //   brand_id: new FormControl('', [Validators.required]),
+    // })
+
+    this.Editp = new FormGroup({
+      id: new FormControl(),
+      Product_Name: new FormControl('', [Validators.required]),
+      Weight: new FormControl('', [Validators.required]),
+      Price: new FormControl('', [Validators.required]),
+      Brand_id: new FormControl('', [Validators.required]),
+      Category_id: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       benefits: new FormControl('', [Validators.required]),
       ingredients: new FormControl('', [Validators.required]),
-      price: new FormControl('', [Validators.required]),
-      discount: new FormControl('', [Validators.required]),
-      pricewithdiscount: new FormControl('', [Validators.required]),
-      weight: new FormControl('', [Validators.required]),
-      image: new FormControl('', [Validators.required]),
-      mainimage: new FormControl('', [Validators.required]),
-      backimage: new FormControl('', [Validators.required]),
-      tableimage: new FormControl('', [Validators.required]),
-      category_id: new FormControl('', [Validators.required]),
-      brand_id: new FormControl('', [Validators.required]),
     })
 
   }
@@ -85,15 +93,15 @@ export class ProductComponent implements OnInit {
     this.show();
   }
 
-  ProductAdd() {
-    this._rest.Addnewproduct(this.AddProductForm.value).subscribe((data: any) => {
-      console.log(data);
-      this.AddProductForm.reset();
-      this.Products.push();
-    }, (err: any) => {
-      console.log(err);
-    })
-  }
+  // ProductAdd() {
+  //   this._rest.Addnewproduct(this.AddProductForm.value).subscribe((data: any) => {
+  //     console.log(data);
+  //     this.AddProductForm.reset();
+  //     this.Products.push();
+  //   }, (err: any) => {
+  //     console.log(err);
+  //   })
+  // }
 
   // Addproduct() {
   //   this._rest.addproducts(this.addproduct.value).subscribe((data) => {
@@ -105,31 +113,31 @@ export class ProductComponent implements OnInit {
   //   });
   // }
 
-  editproduct(i: number) {
-    this.selectedproduct = 1;
-    this.EditProductForm.patchValue(this.Products[i - 1]);
-  }
+  // editproduct(i: number) {
+  //   this.selectedproduct = 1;
+  //   this.EditProductForm.patchValue(this.Products[i - 1]);
+  // }
 
-  updateproduct() {
-    this._rest.Updateproductwithnewdatbase(this.EditProductForm.value).subscribe((data: any) => {
-      console.log(data);
-      this.selectedproduct = null;
-      this.EditProductForm.reset();
-      this.ngOnInit();
-    }, (err: any) => {
-      console.log(err);
-    })
-  }
+  // updateproduct() {
+  //   this._rest.Updateproductwithnewdatbase(this.EditProductForm.value).subscribe((data: any) => {
+  //     console.log(data);
+  //     this.selectedproduct = null;
+  //     this.EditProductForm.reset();
+  //     this.ngOnInit();
+  //   }, (err: any) => {
+  //     console.log(err);
+  //   })
+  // }
 
-  PrdAdd() {
-    this._rest.addProd(this.addproduct.value).subscribe((data) => {
-      console.log(data);
-      this.addproduct.reset();
-      this.prod.push();
-    }, (err) => {
-      console.log(err);
-    });
-  }
+  // PrdAdd() {
+  //   this._rest.addProd(this.addproduct.value).subscribe((data) => {
+  //     console.log(data);
+  //     this.addproduct.reset();
+  //     this.prod.push();
+  //   }, (err) => {
+  //     console.log(err);
+  //   });
+  // }
 
   GetProduct() {
     this._rest.getproducts().subscribe((data: any) => {
@@ -140,14 +148,14 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  GetPod() {
-    this._rest.GetProd().subscribe((data: any) => {
-      console.log(data);
-      this.prod = data.data;
-    }, (err) => {
-      console.log(err);
-    })
-  }
+  // GetPod() {
+  //   this._rest.GetProd().subscribe((data: any) => {
+  //     console.log(data);
+  //     this.prod = data.data;
+  //   }, (err) => {
+  //     console.log(err);
+  //   })
+  // }
 
   newdatbaseproducts() {
     this._rest.Productsss().subscribe((data: any) => {
@@ -181,16 +189,16 @@ export class ProductComponent implements OnInit {
   // }
 
 
-  delete(product_id: number) {
-    if (confirm('Are You Sure To Delete It ?')) {
-      this._rest.DeletenewdatabaseProducts(product_id).subscribe(resp => {
-        console.log(resp);
-        this.newdatbaseproducts();
-      }, err => {
-        console.log(err);
-      });
-    }
-  }
+  // delete(product_id: number) {
+  //   if (confirm('Are You Sure To Delete It ?')) {
+  //     this._rest.DeletenewdatabaseProducts(product_id).subscribe(resp => {
+  //       console.log(resp);
+  //       this.newdatbaseproducts();
+  //     }, err => {
+  //       console.log(err);
+  //     });
+  //   }
+  // }
 
 
   onFileChange(event: any) {
@@ -209,7 +217,6 @@ export class ProductComponent implements OnInit {
     })
   }
 
-
   show() {
     this._rest.images().subscribe((data: any) => {
       console.log(data);
@@ -219,4 +226,43 @@ export class ProductComponent implements OnInit {
 
     }, err => console.log(err));
   }
+
+  productAdd() {
+    this._rest.AddProduct(this.Addp).subscribe((data: any) => {
+      console.log(data);
+      this.p.push();
+      this.Addp.reset();
+    }, (err: any) => {
+      console.log(err);
+    })
+  }
+
+
+  editproduct(i: number) {
+    this.selectedproduct = 1;
+    this.Editp.patchValue(this.Products[i - 1]);
+  }
+
+  editproducts() {
+    this._rest.Editproducts(this.Editp.value).subscribe((data: any) => {
+      console.log(data);
+      this.selectedproduct = null;
+      this.Editp.reset();
+      this.ngOnInit();
+    }, (err: any) => {
+      console.log(err);
+    })
+  }
+
+  delete(id: number) {
+    if (confirm('Are You Sure To Delete It ?')) {
+      this._rest.DeleteProducts(id).subscribe(resp => {
+        console.log(resp);
+        this.newdatbaseproducts();
+      }, err => {
+        console.log(err);
+      });
+    }
+  }
+
 }
