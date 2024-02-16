@@ -116,6 +116,14 @@ export class RestService {
 
   url3 = "http://localhost:5000";
 
+  product() {
+    return this._http.get(this.url3 + '/Product');
+  }
+
+  images() {
+    return this._http.get(this.url3 + '/Showimages');
+  }
+
   getenquiry() {
     return this._http.get(this.url3 + '/Allcontact');
   }
@@ -130,6 +138,34 @@ export class RestService {
 
   Brand() {
     return this._http.get(this.url3 + '/Allbrand');
+  }
+
+  Addcategory(data: any) {
+    return this._http.post(this.url3 + '/addcategory', data);
+  }
+
+  AddBrand(data: any) {
+    return this._http.post(this.url3 + '/addbrand', data);
+  }
+
+  AddProduct(data: any) {
+    return this._http.post(this.url3 + '/ADDProduct', data);
+  }
+
+  getCart() {
+    return this._http.get(this.url3 + '/CartsforAdmin');
+  }
+
+  getwishlist() {
+    return this._http.get(this.url3 + '/Allwishlist');
+  }
+
+  getAllusers() {
+    return this._http.get(this.url3 + '/ALLuser');
+  }
+
+  getorders() {
+    return this._http.get(this.url3 + '/AllordersforAdmin');
   }
 
 }

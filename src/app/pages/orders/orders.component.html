@@ -5,11 +5,6 @@
             <h1>Order's Data</h1>
         </div>
         <br>
-        <div class="text-end">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                ADD New order <i class="fa-regular fa-plus"></i>
-            </button>
-        </div>
         <br>
 
         <div class="table-responsive">
@@ -17,14 +12,11 @@
                 <thead>
                     <tr>
                         <th scope="col"> <b>Order Id </b> </th>
-                        <th scope="col"> <b>Quantity </b> </th>
-                        <th scope="col"> <b>Orderdate </b> </th>
-                        <th scope="col"> <b>Paydate </b> </th>
+                        <th scope="col"> <b>User Id </b> </th>
+                        <th scope="col"> <b>Order Date </b> </th>
                         <th scope="col"> <b>Total Amount </b> </th>
-                        <th scope="col"> <b>Payment Mode </b> </th>
-                        <th scope="col"> <b>Product Id </b> </th>
-                        <th scope="col"> <b>Delivery Date</b> </th>
                         <th scope="col"> <b>Address </b> </th>
+                        <th scope="col"> <b>Cart_id </b> </th>
                         <th scope="col"> <b>Edit order </b> </th>
                         <th scope="col"> <b>Delete order </b> </th>
 
@@ -33,14 +25,12 @@
                 <tbody>
                     <tr *ngFor="let o of allorder | paginate : {itemsPerPage : 10 , currentPage : pro}, let i =index">
                         <td>{{o.id}}</td>
-                        <td>{{o.quantity}}</td>
-                        <td>{{o.orderdate | date:'d/MMM/yyyy'}}</td>
-                        <td>{{o.paydate | date:'d/MMM/yyyy'}}</td>
-                        <td>{{o.totalamount}}</td>
-                        <td>{{o.paymentmode}}</td>
-                        <td>{{o.product_id}}</td>
-                        <td>{{o.deliverydate | date:'d/MMM/yyyy'}}</td>
-                        <td>{{o.address}}</td>
+                        <td>{{o.User_id}}</td>
+                        <td>{{o.Order_date | date:'d/MMM/yyyy'}}</td>
+                        <td>{{o.Total_amount}}</td>
+                        <td>{{o.Shipping_address}}</td>
+                        <td>{{o.Cart_id}}</td>
+
                         <td> <button type="button" class="btn btn-info" (click)="updateorder()" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal2">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -53,163 +43,6 @@
             </table>
         </div>
 
-        <!-- Modal For ADD Category -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">ADD Orders</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form [formGroup]="addorder" (submit)="addorders()">
-                            <div class="col-md-12">
-                                <label for="quantity">Quantity:</label>
-                                <input type="text" name="quantity" class="form-control" id="quantity"
-                                    formControlName="quantity" value="" placeholder="Enter Quantity" required>
-                            </div>
 
-                            <div class="col-md-12">
-                                <label for="orderdate">Orderdate:</label>
-                                <input type="text" name="orderdate" class="form-control" id="orderdate"
-                                    formControlName="orderdate" value="" placeholder="Enter Orderdate" required>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="paydate">Paydate:</label>
-                                <input type="text" name="paydate" class="form-control" id="paydate"
-                                    formControlName="paydate" value="" placeholder="Enter Paydate" required>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="totaldiscount">Total Discount:</label>
-                                <input type="text" name="totaldiscount" class="form-control" id="totaldiscount"
-                                    formControlName="totaldiscount" value="" placeholder="Enter Total Discount"
-                                    required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="totalamount">Total Amount:</label>
-                                <input type="text" name="totalamount" class="form-control" id="totalamount"
-                                    formControlName="totalamount" value="" placeholder="Enter Total Amount" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="satuspaymentamount">Status Payment Amount:</label>
-                                <input type="text" name="satuspaymentamount" class="form-control"
-                                    id="satuspaymentamount" formControlName="satuspaymentamount" value=""
-                                    placeholder="Enter StatusPayment " required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="paymentmode">Paymentmode:</label>
-                                <input type="text" name="paymentmode" class="form-control" id="paymentmode"
-                                    formControlName="paymentmode" value="" placeholder="Enter Paymentmode" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="product_id">Product_id:</label>
-                                <input type="text" name="product_id" class="form-control" id="product_id"
-                                    formControlName="product_id" value="" placeholder="Enter Product_id" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="deliverydate">Delivery Date:</label>
-                                <input type="text" name="deliverydate" class="form-control" id="deliverydate"
-                                    formControlName="deliverydate" value="" placeholder="Enter Delivery Date" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="address">Address:</label>
-                                <input type="text" name="address" class="form-control" id="address"
-                                    formControlName="address" value="" placeholder="Enter Address" required>
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-success">ADD Order</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-
-        <!-- Modal for Edit Category -->
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-            *ngFor="let o of allorder, let i =index">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">EDIT Order </h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <form [formGroup]="editorder" (submit)="updateorder()">
-                            <div class="col-md-12">
-                                <label for="quantity">Quantity:</label>
-                                <input type="text" name="quantity" class="form-control" id="quantity"
-                                    formControlName="quantity" value="" placeholder="EnterQuantity" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="orderdate">Orderdate:</label>
-                                <input type="text" name="orderdate" class="form-control" id="orderdate"
-                                    formControlName="orderdate" value="" placeholder="Enter Orderdate" required>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="paydate">paydate:</label>
-                                <input type="text" name="paydate" class="form-control" id="paydate"
-                                    formControlName="paydate" value="" placeholder="Enter Paydate" required>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="totaldiscount">Total Discount:</label>
-                                <input type="text" name="totaldiscount" class="form-control" id="totaldiscount"
-                                    formControlName="totaldiscount" value="" placeholder="Enter totaldiscount "
-                                    required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="totalamount">Total Amount:</label>
-                                <input type="text" name="totalamount" class="form-control" id="totalamount"
-                                    formControlName="totalamount" value="" placeholder="Enter totalamount " required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="satuspaymentamount">Satus Payment Amount:</label>
-                                <input type="text" name="satuspaymentamount" class="form-control"
-                                    id="satuspaymentamount" formControlName="satuspaymentamount" value=""
-                                    placeholder="Enter Statuspaymentamount " required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="paymentmode">Paymentmode:</label>
-                                <input type="text" name="paymentmode" class="form-control" id="paymentmode"
-                                    formControlName="paymentmode" value="" placeholder="Enter Paymentmode" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="product_id">Product_id:</label>
-                                <input type="text" name="product_id" class="form-control" id="product_id"
-                                    formControlName="product_id" value="" placeholder="Enter Product_id" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="deliverydate">Delivery Date:</label>
-                                <input type="text" name="deliverydate" class="form-control" id="deliverydate"
-                                    formControlName="deliverydate" value="" placeholder="Enter Delivery Date" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <label for="address">Address:</label>
-                                <input type="text" name="address" class="form-control" id="address"
-                                    formControlName="address" value="" placeholder="Enter Address" required>
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-success">Edit Category</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- modal end fro edit Category -->
     </div>
 </div>

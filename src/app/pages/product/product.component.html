@@ -161,7 +161,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                  <form [formGroup]="AddProductForm" (submit)="ProductAdd()" class="row g-3 needs-validation"
+                        <form [formGroup]="AddProductForm" (submit)="ProductAdd()" class="row g-3 needs-validation"
                             novalidate>
                             <div class="col-md-12">
                                 <label for="productname">Product Name:</label>
@@ -192,8 +192,8 @@
 
                             <div class="col-md-12">
                                 <label for="price">price:</label>
-                                <input type="number" name="price" class="form-control" id="price" formControlName="price"
-                                    placeholder="Enter price." required>
+                                <input type="number" name="price" class="form-control" id="price"
+                                    formControlName="price" placeholder="Enter price." required>
                             </div>
 
                             <div class="col-md-12">
@@ -204,8 +204,9 @@
 
                             <div class="col-md-12">
                                 <label for="pricewithdiscount">Pricewithdiscount:</label>
-                                <input type="number" name="pricewithdiscount" class="form-control" id="pricewithdiscount"
-                                    formControlName="pricewithdiscount" placeholder="Enter price." required>
+                                <input type="number" name="pricewithdiscount" class="form-control"
+                                    id="pricewithdiscount" formControlName="pricewithdiscount"
+                                    placeholder="Enter price." required>
                             </div>
 
                             <div class="col-md-12">
@@ -222,7 +223,8 @@
 
                             <div class="col-md-12">
                                 <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                                <input class="form-control" type="file" id="formFileMultiple" formControlName="image" multiple>
+                                <input class="form-control" type="file" id="formFileMultiple" formControlName="image"
+                                    multiple>
                             </div>
 
                             <div class="col-md-12">
@@ -264,7 +266,7 @@
                             <br><br>
                         </form>
 
-<!-- 
+                        <!-- 
                         <form [formGroup]="addproduct" (submit)="PrdAdd()" class="row g-3 needs-validation" novalidate>
                             <div class="col-md-12">
                                 <label for="Product_Name">Product Name:</label>
@@ -388,6 +390,18 @@
         <div class="section section-demo" id="examples">
             <h2>Product's</h2>
             <br>
+
+            <div class="row">
+                <div class="col-md-2" *ngFor="let ii of image">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <img [src]="ii.mainimage" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div class="row">
                 <!-- <div class="col-md-4"
                     *ngFor="let p of Allproducts | paginate: { itemsPerPage: 9, currentPage: pro }, let i=index">
@@ -409,7 +423,7 @@
                 <div class="text-center">
                     <pagination-controls (pageChange)="pro = $event"></pagination-controls>
                 </div> -->
-
+                <!-- 
                 <div class="col-md-6"
                     *ngFor="let p of Products | paginate :{itemsPerPage :2 ,currentPage : pro},let i=index">
                     <div class="card">
@@ -432,6 +446,37 @@
                             <b>Ingredients</b>
                             <p>{{p.ingredients}}</p>
                             <br>
+                            <p>{{p.benefits}}</p>
+                            <br>
+                        </div>
+                    </div>
+                </div> -->
+
+
+
+                <div class="col-md-6" *ngFor="let p of p | paginate :{itemsPerPage :2 ,currentPage : pro},let i=index">
+                    <div class="card">
+                        <div class="card-body" style="overflow-y: scroll; height: 500px;">
+
+                            <button type="button" (click)="editproduct(p.product_id)" class="btn btn-info"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+
+                            <div class="text-end">
+                                <button type="button" (click)="delete(p['product_id'])" class="btn btn-danger"><i
+                                        class="fa-regular fa-trash-can"></i></button>
+                            </div>
+                            <img [src]="p.mainimage" width="100%" alt="">
+                            <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br><br>
+                            <h6>{{p.Weight}}</h6>
+                            <h4>&#8377; {{p.Price}}</h4>
+                            <b>Description :</b>
+                            <p>{{p.description}}</p> <br>
+                            <b>Ingredients :</b>
+                            <p>{{p.ingredients}}</p>
+                            <br>
+                            <b>Benefits :</b>
                             <p>{{p.benefits}}</p>
                             <br>
                         </div>

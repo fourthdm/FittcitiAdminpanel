@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { CSP_NONCE, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/rest.service';
 
@@ -11,6 +11,8 @@ export class ProductComponent implements OnInit {
 
   pro: any;
   Products: any[] = [];
+  image: any[] = [];
+  p: any[] = [];
   AddProductForm: FormGroup;
   EditProductForm: FormGroup;
   addproduct: FormGroup;
@@ -75,10 +77,12 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.GetPod();
-    this.GetProduct();
+    this.product();
+    // this.GetPod();
+    // this.GetProduct();
     this.Allcategory();
     this.newdatbaseproducts();
+    this.show();
   }
 
   ProductAdd() {
@@ -196,5 +200,23 @@ export class ProductComponent implements OnInit {
     }
   }
 
+  product() {
+    this._rest.product().subscribe((data: any) => {
+      console.log(data);
+      this.p = data.data;
+    }, (err) => {
+      console.log(err);
+    })
+  }
 
+
+  show() {
+    this._rest.images().subscribe((data: any) => {
+      console.log(data);
+      // this.Imagess = data.data;
+      this.image = (data as any)['data'];
+      // console.log(this. Imagess);
+
+    }, err => console.log(err));
+  }
 }

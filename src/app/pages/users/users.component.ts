@@ -9,7 +9,7 @@ import { RestService } from 'src/app/rest.service';
 })
 export class UsersComponent implements OnInit {
 
-  pro:number = 1;
+  pro: number = 1;
 
   Allusers: any[] = [];
   adduser: FormGroup;
@@ -17,25 +17,21 @@ export class UsersComponent implements OnInit {
 
   constructor(private _rest: RestService) {
     this.adduser = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      emailid: new FormControl('', [Validators.required]),
-      phone_no: new FormControl('', [Validators.required]),
-      order_id: new FormControl('', [Validators.required]),
-      product_id: new FormControl('', [Validators.required]),
-      date: new FormControl('', [Validators.required]),
-      orderdetails_id: new FormControl('', [Validators.required])
+      Name: new FormControl('', [Validators.required]),
+      Username: new FormControl('', [Validators.required]),
+      Address: new FormControl('', [Validators.required]),
+      Email: new FormControl('', [Validators.required]),
+      Mobileno: new FormControl('', [Validators.required]),
+
     });
 
     this.edituser = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      emailid: new FormControl('', [Validators.required]),
-      phone_no: new FormControl('', [Validators.required]),
-      order_id: new FormControl('', [Validators.required]),
-      product_id: new FormControl('', [Validators.required]),
-      date: new FormControl('', [Validators.required]),
-      orderdetails_id: new FormControl('', [Validators.required])
+      Name: new FormControl('', [Validators.required]),
+      Username: new FormControl('', [Validators.required]),
+      Address: new FormControl('', [Validators.required]),
+      Email: new FormControl('', [Validators.required]),
+      Mobileno: new FormControl('', [Validators.required]),
+
     })
 
   }
@@ -45,7 +41,7 @@ export class UsersComponent implements OnInit {
   }
 
   getusers() {
-    this._rest.users().subscribe((data: any) => {
+    this._rest.getAllusers().subscribe((data: any) => {
       console.log(data);
       this.Allusers = data.data;
     }, (err: any) => {

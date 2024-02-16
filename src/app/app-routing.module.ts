@@ -8,6 +8,7 @@ import { BrandComponent } from './pages/brand/brand.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { UsersComponent } from './pages/users/users.component';
 import { EnquiryComponent } from './pages/enquiry/enquiry.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'brand', component: BrandComponent },
   { path: 'order', component: OrdersComponent },
   { path: 'user', component: UsersComponent },
+  { path: 'wishlist', component: WishlistComponent },
   { path: 'enquiry', component: EnquiryComponent },
   { path: '**', redirectTo: 'Dashboard' }
 ];

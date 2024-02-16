@@ -1,1 +1,27 @@
-<p>wishlist works!</p>
+<div class="content-wrapper">
+    <div class="container">
+        <table class="table  table-responsive">
+            <thead>
+                <tr>
+                    <th scope="col"> <b>Id </b> </th>
+                    <th scope="col"> <b>User_id</b> </th>
+                    <th scope="col"> <b>Product_Name </b> </th>
+                    <th scope="col"> <b>Price </b> </th>    
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of wishlist | paginate: { itemsPerPage: 12, currentPage: pro }, let i =index">
+                    <td>{{i+1}}</td>
+                    <td>{{u.User_id}}</td>
+                    <td>{{u.Product_Name}}</td>
+                    <td>{{u.Price}}</td>
+
+                </tr>
+                <div class="text-center">
+                    <pagination-controls (pageChange)=" pro = $event "></pagination-controls>
+                </div>
+            </tbody>
+        </table>
+    </div>
+</div>
