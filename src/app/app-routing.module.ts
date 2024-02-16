@@ -7,17 +7,19 @@ import { CategoryComponent } from './pages/category/category.component';
 import { BrandComponent } from './pages/brand/brand.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { UsersComponent } from './pages/users/users.component';
+import { EnquiryComponent } from './pages/enquiry/enquiry.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'Dashboard',pathMatch:'full'},
-  {path:'Dashboard',component:DashboardComponent},
-  {path:'Home',component:HomeComponent},
-  {path:'product',component:ProductComponent},
-  {path:'category',component:CategoryComponent},
-  {path:'brand',component:BrandComponent},
-  {path:'order',component:OrdersComponent},
-  {path:'user',component:UsersComponent},
-  {path:'**',redirectTo:'Dashboard'}
+  { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
+  { path: 'Dashboard', component: DashboardComponent },
+  { path: 'Home', component: HomeComponent },
+  { path: 'product', component: ProductComponent },
+  { path: 'category', component: CategoryComponent },
+  { path: 'brand', component: BrandComponent },
+  { path: 'order', component: OrdersComponent },
+  { path: 'user', component: UsersComponent },
+  { path: 'enquiry', component: EnquiryComponent },
+  { path: '**', redirectTo: 'Dashboard' }
 ];
 
 @NgModule({

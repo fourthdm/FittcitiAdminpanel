@@ -161,7 +161,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- <form [formGroup]="AddProductForm" (submit)="ProductAdd()" class="row g-3 needs-validation"
+                  <form [formGroup]="AddProductForm" (submit)="ProductAdd()" class="row g-3 needs-validation"
                             novalidate>
                             <div class="col-md-12">
                                 <label for="productname">Product Name:</label>
@@ -262,9 +262,9 @@
                                 </div>
                             </div>
                             <br><br>
-                        </form> -->
+                        </form>
 
-
+<!-- 
                         <form [formGroup]="addproduct" (submit)="PrdAdd()" class="row g-3 needs-validation" novalidate>
                             <div class="col-md-12">
                                 <label for="Product_Name">Product Name:</label>
@@ -299,18 +299,18 @@
                                     formControlName="Price" placeholder="Enter price." required>
                             </div>
 
-                            <!-- <div class="col-md-12">
+                        <div class="col-md-12">
                                 <label for="discount">Discount:</label>
                                 <input type="number" name="discount" class="form-control" id="discount"
                                     formControlName="discount" placeholder="Enter price." required>
-                            </div> -->
+                            </div>
 
-                            <!-- <div class="col-md-12">
+                             <div class="col-md-12">
                                 <label for="pricewithdiscount">Pricewithdiscount:</label>
                                 <input type="number" name="pricewithdiscount" class="form-control"
                                     id="pricewithdiscount" formControlName="pricewithdiscount"
                                     placeholder="Enter price." required>
-                            </div> -->
+                            </div> 
 
                             <div class="col-md-12">
                                 <label for="Weight">Weight:</label>
@@ -325,9 +325,9 @@
                                 </div>
                                 <input type="file" class="form-control" placeholder="" formControlName="Imageurl"
                                     multiple class="form-control" (change)="onFileChange($event)">
-                                <!-- <label for="image">image :</label>
+                                 <label for="image">image :</label>
                             <input type="text" name="image" class="form-control" id="image" formControlName="image"
-                                value="" placeholder="Enter image" required> -->
+                                value="" placeholder="Enter image" required> 
                             </div>
 
                             <div class="col-md-12">
@@ -348,11 +348,11 @@
                                     formControlName="image3" value="" placeholder="Enter image" required>
                             </div>
 
-                            <!-- <div class="col-md-12">
+                            <div class="col-md-12">
                                 <label for="tableimage">Tableimage :</label>
                                 <input type="text" name="tableimage" class="form-control" id="tableimage"
                                     formControlName="tableimage" value="" placeholder="Enter image" required>
-                            </div> -->
+                            </div> 
 
                             <div class="col-md-12">
                                 <label for="Category_id">Category ID :</label>
@@ -373,7 +373,7 @@
                                 </div>
                             </div>
                             <br><br>
-                        </form>
+                        </form> -->
 
 
                     </div>
@@ -424,10 +424,7 @@
                                 <button type="button" (click)="delete(p['product_id'])" class="btn btn-danger"><i
                                         class="fa-regular fa-trash-can"></i></button>
                             </div>
-
-
-                            <img [src]="p.mainimage" width="100%" alt="">
-
+                            <img [src]="p.image2" width="100%" alt="">
                             <h4 class="card-title"><b>{{p.productname}}</b></h4> <br><br>
                             <h6>{{p.weight}}SER</h6>
                             <h4>&#8377; {{p.price}}</h4>
@@ -437,7 +434,6 @@
                             <br>
                             <p>{{p.benefits}}</p>
                             <br>
-
                         </div>
                     </div>
                 </div>
@@ -466,8 +462,6 @@
 
             </div>
         </div> -->
-
-
         </div>
     </div> <br><br>
 </div>

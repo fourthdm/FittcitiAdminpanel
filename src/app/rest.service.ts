@@ -98,12 +98,11 @@ export class RestService {
     return this._http.put(this.url2 + '/Updateproduct/' + data.product_id, data)
   }
 
-  DeletenewdatabaseProducts(product_id:any){
+  DeletenewdatabaseProducts(product_id: any) {
     return this._http.delete(this.url2 + '/Deleteproduct/' + product_id)
   }
 
-
-  Deleteorders(){
+  Deleteorders() {
     return this._http.delete(this.url2 + '/Deleteorders')
   }
 
@@ -114,6 +113,25 @@ export class RestService {
   users() {
     return this._http.get(this.url2 + '/Alluser')
   }
+
+  url3 = "http://localhost:5000";
+
+  getenquiry() {
+    return this._http.get(this.url3 + '/Allcontact');
+  }
+
+  deleteinquiry(Id: any) {
+    return this._http.delete(this.url3 + '/Deleteenquiry/' + Id);
+  }
+
+  Category() {
+    return this._http.get(this.url3 + '/Allcategory');
+  }
+
+  Brand() {
+    return this._http.get(this.url3 + '/Allbrand');
+  }
+
 }
 
 

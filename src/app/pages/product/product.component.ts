@@ -75,7 +75,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.GetPod();
+    this.GetPod();
     this.GetProduct();
     this.Allcategory();
     this.newdatbaseproducts();
@@ -120,7 +120,6 @@ export class ProductComponent implements OnInit {
   PrdAdd() {
     this._rest.addProd(this.addproduct.value).subscribe((data) => {
       console.log(data);
-      
       this.addproduct.reset();
       this.prod.push();
     }, (err) => {

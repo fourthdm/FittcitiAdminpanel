@@ -32,7 +32,7 @@ export class CategoryComponent implements OnInit {
   }
 
   AllCategory() {
-    this._rest.AllCategory().subscribe((result: any) => {
+    this._rest.Category().subscribe((result: any) => {
       console.log(result);
       this.allcategory = result.data;
     }, (err) => {

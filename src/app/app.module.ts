@@ -19,12 +19,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
+import { EnquiryComponent } from './pages/enquiry/enquiry.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent,
     HomeComponent,
     CategoryComponent,
     BrandComponent,
@@ -34,6 +34,8 @@ import { ToastrModule } from 'ngx-toastr';
     UsersComponent,
     SidebarComponent,
     WishlistComponent,
+    FooterComponent,
+    EnquiryComponent
 
   ],
   imports: [
@@ -45,7 +47,7 @@ import { ToastrModule } from 'ngx-toastr';
     NgxPaginationModule,
     ToastrModule.forRoot(),
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

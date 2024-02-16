@@ -22,7 +22,7 @@
             <tbody>
                 <tr *ngFor="let c of allcategory | paginate :{ itemsPerPage : 10, currentPage : pro } let i =index">
                     <td>{{c.Category_id}}</td>
-                    <td>{{c.Categories_Name}}</td>
+                    <td>{{c.Category_Name}}</td>
                     <td> <button type="button" class="btn btn-info" (click)="editcategory(c.Category_id)"
                             data-bs-toggle="modal" data-bs-target="#exampleModal2">
                             <i class="fa-solid fa-pen-to-square"></i>

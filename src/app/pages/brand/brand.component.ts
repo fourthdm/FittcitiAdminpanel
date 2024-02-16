@@ -35,7 +35,7 @@ export class BrandComponent implements OnInit {
   }
 
   AllBrand() {
-    this._rest.AllBrand().subscribe((result: any) => {
+    this._rest.Brand().subscribe((result: any) => {
       console.log(result);
       this.AllBrands = result.data;
     }, (err) => {
