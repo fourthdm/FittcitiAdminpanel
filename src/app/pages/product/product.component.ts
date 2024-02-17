@@ -89,7 +89,7 @@ export class ProductComponent implements OnInit {
     // this.GetPod();
     // this.GetProduct();
     this.Allcategory();
-    this.newdatbaseproducts();
+    // this.newdatbaseproducts();
     this.show();
   }
 
@@ -140,7 +140,7 @@ export class ProductComponent implements OnInit {
   // }
 
   GetProduct() {
-    this._rest.getproducts().subscribe((data: any) => {
+    this._rest.product().subscribe((data: any) => {
       console.log(data);
       this.Allproducts = data.data;
     }, (err) => {
@@ -157,20 +157,20 @@ export class ProductComponent implements OnInit {
   //   })
   // }
 
-  newdatbaseproducts() {
-    this._rest.Productsss().subscribe((data: any) => {
-      console.log(data);
-      this.Products = data.data;
-    }, (err: any) => {
-      console.log(err)
-    })
-  }
+  // newdatbaseproducts() {
+  //   this._rest.Productsss().subscribe((data: any) => {
+  //     console.log(data);
+  //     this.Products = data.data;
+  //   }, (err: any) => {
+  //     console.log(err)
+  //   })
+  // }
 
   Allcategory() {
-    this._rest.AllCategory().subscribe((result: any) => {
+    this._rest.Category().subscribe((result: any) => {
       console.log(result);
       this.AllCategory = result.data;
-    }, (err) => {
+    }, (err: any) => {
       console.log(err);
     })
   }
@@ -202,7 +202,6 @@ export class ProductComponent implements OnInit {
 
 
   onFileChange(event: any) {
-
     for (var i = 0; i < event.target.files.length; i++) {
       this.Products.push(event.target.files[i]);
     }
@@ -222,8 +221,6 @@ export class ProductComponent implements OnInit {
       console.log(data);
       // this.Imagess = data.data;
       this.image = (data as any)['data'];
-      // console.log(this. Imagess);
-
     }, err => console.log(err));
   }
 
@@ -237,10 +234,9 @@ export class ProductComponent implements OnInit {
     })
   }
 
-
   editproduct(i: number) {
     this.selectedproduct = 1;
-    this.Editp.patchValue(this.Products[i - 1]);
+    this.Editp.patchValue(this.p[i - 1]);
   }
 
   editproducts() {
@@ -256,9 +252,9 @@ export class ProductComponent implements OnInit {
 
   delete(id: number) {
     if (confirm('Are You Sure To Delete It ?')) {
-      this._rest.DeleteProducts(id).subscribe(resp => {
+      this._rest.Deleteproduct(id).subscribe(resp => {
         console.log(resp);
-        this.newdatbaseproducts();
+        this.product();
       }, err => {
         console.log(err);
       });

@@ -18,12 +18,12 @@ export class CategoryComponent implements OnInit {
 
   constructor(private _rest: RestService) {
     this.AddCategory = new FormGroup({
-      Categories_Name: new FormControl('', [Validators.required]),
+      Category_Name: new FormControl('', [Validators.required]),
     })
 
     this.EditCategoryForm = new FormGroup({
       Category_id: new FormControl(),
-      Categories_Name: new FormControl('', [Validators.required])
+      Category_Name: new FormControl('', [Validators.required])
     })
   }
 
@@ -41,7 +41,7 @@ export class CategoryComponent implements OnInit {
   }
 
   AddCategories() {
-    this._rest.addcategory(this.AddCategory.value).subscribe((result) => {
+    this._rest.Addcategory(this.AddCategory.value).subscribe((result) => {
       console.log(result);
       this.AddCategory.reset();
       this.allcategory.push()
@@ -52,11 +52,11 @@ export class CategoryComponent implements OnInit {
 
   editcategory(i: number) {
     this.selctedcategory = 1;
-    this.EditCategoryForm.patchValue(this.allcategory[i-1]);
+    this.EditCategoryForm.patchValue(this.allcategory[i - 1]);
   }
 
   UpdateCategory() {
-    this._rest.editCategory(this.EditCategoryForm.value).subscribe((data:any) => {
+    this._rest.EditCategory(this.EditCategoryForm.value).subscribe((data: any) => {
       console.log(data);
       this.selctedcategory = null;
       this.EditCategoryForm.reset();
@@ -68,7 +68,7 @@ export class CategoryComponent implements OnInit {
 
   delete(Category_id: number) {
     if (confirm('Are You Sure To Delete It ?')) {
-      this._rest.DeleteCategory(Category_id).subscribe(resp => {
+      this._rest.Deletecategory(Category_id).subscribe(resp => {
         console.log(resp);
         this.AllCategory();
       }, err => {

@@ -44,7 +44,7 @@ export class BrandComponent implements OnInit {
   }
 
   AddBrands() {
-    this._rest.addbrands(this.Addbrand.value).subscribe((result: any) => {
+    this._rest.AddBrand(this.Addbrand.value).subscribe((result: any) => {
       console.log(result);
       this.AllBrands.push(result.data);
       this.Addbrand.reset();
@@ -59,7 +59,7 @@ export class BrandComponent implements OnInit {
   }
 
   Updatebrand() {
-    this._rest.editbrand(this.editbrandForm.value).subscribe((result: any) => {
+    this._rest.Editbrand(this.editbrandForm.value).subscribe((result: any) => {
       console.log(result);
       this.selectedbrand = null;
       this.editbrandForm.reset();

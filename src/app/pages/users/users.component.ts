@@ -53,7 +53,6 @@ export class UsersComponent implements OnInit {
 
   updateuser() { }
 
-
   delete(id: number) { }
 
 }

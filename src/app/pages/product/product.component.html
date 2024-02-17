@@ -78,12 +78,12 @@
                                 <input type="number" name="Price" class="form-control" id="Price"
                                     formControlName="Price" placeholder="Enter Price." required>
                             </div>
-                        
+
                             <div class="col-md-12">
                                 <label for="Weight">Weight:</label>
                                 <input type="text" name="Weight" class="form-control" id="Weight"
                                     formControlName="Weight" placeholder="Enter weight of Product" required>
-                            </div>                
+                            </div>
 
                             <div class="col-md-12">
                                 <label for="Category_id">Category ID :</label>
@@ -371,19 +371,17 @@
                     </div>
                 </div> -->
 
-
-
                 <div class="col-md-6" *ngFor="let p of p | paginate :{itemsPerPage :2 ,currentPage : pro},let i=index">
                     <div class="card">
                         <div class="card-body" style="overflow-y: scroll; height: 500px;">
 
-                            <button type="button" (click)="editproduct(p.product_id)" class="btn btn-info"
+                            <button type="button" (click)="editproduct(p.id)" class="btn btn-info"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal1">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
 
                             <div class="text-end">
-                                <button type="button" (click)="delete(p['product_id'])" class="btn btn-danger"><i
+                                <button type="button" (click)="delete(p['id'])" class="btn btn-danger"><i
                                         class="fa-regular fa-trash-can"></i></button>
                             </div>
                             <img [src]="p.mainimage" width="100%" alt="">
