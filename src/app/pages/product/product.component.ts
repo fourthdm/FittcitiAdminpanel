@@ -22,6 +22,7 @@ export class ProductComponent implements OnInit {
   prod: any[] = [];
   Addp: FormGroup;
   Editp: FormGroup;
+  ADDimg: FormGroup;
 
   selectedproduct: any = null;
 
@@ -38,20 +39,11 @@ export class ProductComponent implements OnInit {
       ingredients: new FormControl('', [Validators.required]),
     });
 
-    // this.addproduct = new FormGroup({
-    //   Product_Name: new FormControl('', [Validators.required]),
-    //   Weight: new FormControl('', [Validators.required]),
-    //   Price: new FormControl('', [Validators.required]),
-    //   Category_id: new FormControl('', [Validators.required]),
-    //   Brand_id: new FormControl('', [Validators.required]),
-    //   Description: new FormControl('', [Validators.required]),
-    //   Ingredients: new FormControl('', [Validators.required]),
-    //   Benifits: new FormControl('', [Validators.required]),
-    //   Imageurl: new FormControl('', [Validators.required]),
-    //   image1: new FormControl('', [Validators.required]),
-    //   image2: new FormControl('', [Validators.required]),
-    //   image3: new FormControl('', [Validators.required])
-    // })
+    this.ADDimg = new FormGroup({
+      product_id: new FormControl('', [Validators.required]),
+      mainimage: new FormControl('', [Validators.required])
+    })
+
 
     // this.AddProductForm = new FormGroup({
     //   productname: new FormControl('', [Validators.required]),
@@ -222,6 +214,17 @@ export class ProductComponent implements OnInit {
       // this.Imagess = data.data;
       this.image = (data as any)['data'];
     }, err => console.log(err));
+  }
+
+  addimg1() {
+    if (this.ADDimg.valid) {
+      this._rest.Addimages(this.ADDimg.value).subscribe((data: any) => {
+        console.log(data);
+        this.image.push(data.data);
+      }, (err: any) => {
+        console.log(err);
+      })
+    }
   }
 
   productAdd() {

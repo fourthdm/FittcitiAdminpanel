@@ -109,6 +109,9 @@ export class RestService {
 
   url3 = "http://localhost:5000";
 
+  Addimages(data: any) {
+    return this._http.post(this.url3 + '/upload', data);
+  }
 
   images() {
     return this._http.get(this.url3 + '/Showimages');
@@ -137,7 +140,6 @@ export class RestService {
   Deletecategory(data: any) {
     return this._http.delete(this.url3 + '/deletecategory/' + data.Category_id, data);
   }
-
 
   Brand() {
     return this._http.get(this.url3 + '/Allbrand');

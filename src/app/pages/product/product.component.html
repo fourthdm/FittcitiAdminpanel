@@ -113,6 +113,53 @@
             </button>
         </div>
         <br>
+        <div class="text-end">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addimages">
+                Add Images <i class="fa-regular fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="modal fade" id="addimages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Images</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-6">
+                            <h3 class="text-22 text-midnight text-bold mb-4">Add image</h3>
+                            <form [formGroup]="ADDimg" (ngSubmit)="addimg1()">
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <div class="input-label">
+                                            <label>Product id</label>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder=""
+                                            formControlName="product_id">
+                                    </div>
+
+                                    <div class="form-group col-lg-6">
+                                        <div class="input-label">
+                                            <label>img</label>
+                                        </div>
+                                        <input type="file" class="form-control" placeholder=""
+                                            formControlName="mainimage" multiple class="form-control"
+                                            (change)="onFileChange($event)">
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <button class="btn btn-primary" type="submit">Submilt</button>
+                                        <!-- <button type="submit" class="submit-btn" (click)="addimg1()">पुढे जा</button> -->
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         <!-- Modal For ADD Products -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -309,7 +356,6 @@
         <div class="section section-demo" id="examples">
             <h2>Product's</h2>
             <br>
-
             <div class="row">
                 <div class="col-md-2" *ngFor="let ii of image">
 
@@ -321,6 +367,7 @@
                 </div>
 
             </div>
+
             <div class="row">
                 <!-- <div class="col-md-4"
                     *ngFor="let p of Allproducts | paginate: { itemsPerPage: 9, currentPage: pro }, let i=index">
