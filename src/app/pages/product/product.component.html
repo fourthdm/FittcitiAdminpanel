@@ -85,18 +85,12 @@
                                     formControlName="discount" placeholder="Enter Discount." required>
                             </div>
 
-                            <div class="col-md-12">
-                                <label for="Amount">Amount:</label>
-                                <input type="number" name="Amount" class="form-control" id="Amount"
-                                    formControlName="Amount" placeholder="Enter Amount." required>
-                            </div>
-
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <label for="pricewithdiscount">pricewith discounts:</label>
                                 <input type="number" name="pricewithdiscount" class="form-control"
                                     id="pricewithdiscount" formControlName="pricewithdiscount"
                                     placeholder="Enter pricewithdiscount." required>
-                            </div>
+                            </div> -->
 
                             <div class="col-md-12">
                                 <label for="Weight">Weight:</label>
@@ -222,7 +216,6 @@
                                 <input type="number" name="Price" class="form-control" id="Price"
                                     formControlName="Price" placeholder="Enter price." required>
                             </div>
-
 
                             <div class="col-md-12">
                                 <label for="discount">Discount:</label>
@@ -471,8 +464,10 @@
                             </div>
                             <img [src]="p.mainimage" width="100%" alt="">
                             <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br><br>
-                            <h6>{{p.Weight}}</h6>
-                            <h4>&#8377; {{p.Price}}</h4>
+                            <h6><b>Weight</b>: {{p.Weight}}</h6>
+                            <h6> <b>Actual Price: </b> <b>&#8377; {{p.Price}}</b></h6>
+                            <p><b>Discount:</b> {{p.discount}}%</p>
+                            <p><b>Discount Price:</b> &#8377; {{p.pricewithdiscount}}</p>
                             <b>Description :</b>
                             <p>{{p.description}}</p> <br>
                             <b>Ingredients :</b>
