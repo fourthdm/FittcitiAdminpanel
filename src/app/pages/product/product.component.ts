@@ -1,4 +1,4 @@
-import { CSP_NONCE, Component, OnInit } from '@angular/core';
+import { CSP_NONCE, Component, Input, OnInit } from '@angular/core';
 import { tick } from '@angular/core/testing';
 import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { RestService } from 'src/app/rest.service';
@@ -24,6 +24,8 @@ export class ProductComponent implements OnInit {
   Editp: FormGroup;
   ADDimg: FormGroup;
 
+  product_id:any;
+
   selectedproduct: any = null;
 
   constructor(private _rest: RestService) {
@@ -43,7 +45,8 @@ export class ProductComponent implements OnInit {
 
     this.ADDimg = new FormGroup({
       product_id: new FormControl('', [Validators.required]),
-      mainimage: new FormControl('', [Validators.required])
+      mainimage: new FormControl('', [Validators.required]),
+      image: new FormControl('', [Validators.required])
     })
 
 
@@ -83,10 +86,18 @@ export class ProductComponent implements OnInit {
     this.product();
     // this.GetPod();
     // this.GetProduct();
-    this.Allcategory();
     // this.newdatbaseproducts();
     this.show();
+    // this.single();
   }
+
+  // single() {
+  //   this._rest.getsingleimage().subscribe((data: any) => {
+  //     console.log(data);
+  //     this.image= data.data
+
+  //   })
+  // }
 
   // ProductAdd() {
   //   this._rest.Addnewproduct(this.AddProductForm.value).subscribe((data: any) => {
@@ -137,7 +148,7 @@ export class ProductComponent implements OnInit {
   GetProduct() {
     this._rest.product().subscribe((data: any) => {
       console.log(data);
-      this.Allproducts = data.data;
+      this.p = data.data;
     }, (err) => {
       console.log(err);
     })

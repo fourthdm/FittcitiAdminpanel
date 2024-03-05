@@ -11,7 +11,7 @@ import { EnquiryComponent } from './pages/enquiry/enquiry.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'product', pathMatch: 'full' },
   { path: 'Dashboard', component: DashboardComponent },
   { path: 'Home', component: HomeComponent },
   { path: 'product', component: ProductComponent },

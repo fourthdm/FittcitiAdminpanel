@@ -117,6 +117,10 @@ export class RestService {
     return this._http.get(this.url3 + '/Showimages');
   }
 
+  getsingleimage() {
+    return this._http.get(this.url3 + '/singleimage');
+  }
+
   getenquiry() {
     return this._http.get(this.url3 + '/Allcontact');
   }
@@ -187,6 +191,10 @@ export class RestService {
 
   getorders() {
     return this._http.get(this.url3 + '/AllordersforAdmin');
+  }
+
+  showimages(data: any) {
+    return this._http.get(this.url3 + '/Showimg' , data.product_id);
   }
 
 }

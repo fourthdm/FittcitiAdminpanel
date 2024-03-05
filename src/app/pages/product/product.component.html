@@ -223,11 +223,11 @@
                                     formControlName="discount" placeholder="Enter Discount." required>
                             </div>
 
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <label for="Amount">Amount:</label>
                                 <input type="number" name="Amount" class="form-control" id="Amount"
                                     formControlName="Amount" placeholder="Enter Amount." required>
-                            </div>
+                            </div> -->
 
                             <div class="col-md-12">
                                 <label for="pricewithdiscount">pricewith discounts:</label>
@@ -390,11 +390,12 @@
             <div class="row">
                 <div class="col-md-2" *ngFor="let ii of image">
 
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="card-body">
+                            <img [src]="ii.image">
                             <img [src]="ii.mainimage" alt="">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -449,10 +450,10 @@
                     </div>
                 </div> -->
 
-                <div class="col-md-6" *ngFor="let p of p | paginate :{itemsPerPage :2 ,currentPage : pro},let i=index">
+                <div class="col-md-6" *ngFor="let p of p | paginate :{itemsPerPage :4 ,currentPage : pro},let i=index">
+
                     <div class="card">
                         <div class="card-body" style="overflow-y: scroll; height: 500px;">
-
                             <button type="button" (click)="editproduct(p.id)" class="btn btn-info"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal1">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -462,7 +463,9 @@
                                 <button type="button" (click)="delete(p['id'])" class="btn btn-danger"><i
                                         class="fa-regular fa-trash-can"></i></button>
                             </div>
-                            <img [src]="p.mainimage" width="100%" alt="">
+                            <img [src]="p.image" alt="">
+                            <!-- <img [src]="p.mainimage" alt=""> -->
+                            <!-- <img [src]="p.mainimage" width="100%" alt=""> -->
                             <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br><br>
                             <h6><b>Weight</b>: {{p.Weight}}</h6>
                             <h6> <b>Actual Price: </b> <b>&#8377; {{p.Price}}</b></h6>
@@ -476,7 +479,28 @@
                             <b>Benefits :</b>
                             <p>{{p.benefits}}</p>
                             <br>
+                            <br>
+                       
+                            <div id="carouselExample" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item" *ngFor="let image of p; let i = index"
+                                        [class.active]="i === 0">
+                                        <img [src]="image.mainimage" class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -484,7 +508,7 @@
                     <pagination-controls (pageChange)="pro = $event"></pagination-controls>
                 </div>
             </div>
-
+            <!-- <img src="https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/#1707209867566.jpg" alt=""> -->
             <!-- <div class="row">
             <div class="col-md-10" *ngFor="let p of prod, let i=index">
 
