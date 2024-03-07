@@ -164,6 +164,10 @@ export class RestService {
   product() {
     return this._http.get(this.url3 + '/Product');
   }
+  
+  Productss(){
+    return this._http.get(this.url3 + '/prod');
+  }
 
   AddProduct(data: any) {
     return this._http.post(this.url3 + '/Addproduct', data);

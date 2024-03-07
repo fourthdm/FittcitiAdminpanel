@@ -183,7 +183,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form [formGroup]="Addp" (submit)="productAdd()" class="row g-3 needs-validation" novalidate>
+                        <form [formGroup]="Addp" (ngSubmit)="productAdd()" class="row g-3 needs-validation" novalidate>
                             <div class="col-md-12">
                                 <label for="Product_Name">Product Name:</label>
                                 <input type="text" name="Product_Name" class="form-control" id="Product_Name"
@@ -229,12 +229,12 @@
                                     formControlName="Amount" placeholder="Enter Amount." required>
                             </div> -->
 
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <label for="pricewithdiscount">pricewith discounts:</label>
                                 <input type="number" name="pricewithdiscount" class="form-control"
                                     id="pricewithdiscount" formControlName="pricewithdiscount"
                                     placeholder="Enter pricewithdiscount." required>
-                            </div>
+                            </div> -->
 
                             <div class="col-md-12">
                                 <label for="Weight">Weight:</label>
