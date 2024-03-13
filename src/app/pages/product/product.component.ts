@@ -12,8 +12,8 @@ export class ProductComponent implements OnInit {
 
   pro: number = 1;
   Products: any[] = [];
-  image: any[] = [];
-  p: any[] = [];
+  images: any[] = [];
+  pp: any[] = [];
   // AddProductForm: FormGroup;
   // EditProductForm: FormGroup;
   // addproduct: FormGroup;
@@ -45,8 +45,7 @@ export class ProductComponent implements OnInit {
 
     this.ADDimg = new FormGroup({
       product_id: new FormControl('', [Validators.required]),
-      mainimage: new FormControl('', [Validators.required]),
-      image: new FormControl('', [Validators.required])
+      mainimage: new FormControl('', [Validators.required])
     })
 
 
@@ -148,7 +147,7 @@ export class ProductComponent implements OnInit {
   GetProduct() {
     this._rest.product().subscribe((data: any) => {
       console.log(data);
-      this.p = data.data;
+      this.pp = data.data;
     }, (err) => {
       console.log(err);
     })
@@ -214,9 +213,9 @@ export class ProductComponent implements OnInit {
   }
 
   product() {
-    this._rest.Productss().subscribe((data: any) => {
+    this._rest.product().subscribe((data: any) => {
       console.log(data);
-      this.p = data.data;
+      this.pp = data.data;
     }, (err) => {
       console.log(err);
     })
@@ -226,7 +225,7 @@ export class ProductComponent implements OnInit {
     this._rest.images().subscribe((data) => {
       console.log(data);
       // this.Imagess = data.data;
-      this.image = (data as any)['data'];
+      this.images = (data as any)['data'];
     }, err => console.log(err));
   }
 
@@ -234,7 +233,7 @@ export class ProductComponent implements OnInit {
     if (this.ADDimg.valid) {
       this._rest.Addimages(this.ADDimg.value).subscribe((data: any) => {
         console.log(data);
-        this.image.push(data.data);
+        this.images.push();
       }, (err: any) => {
         console.log(err);
       })
@@ -242,10 +241,11 @@ export class ProductComponent implements OnInit {
   }
 
   productAdd() {
-    this._rest.AddProduct(this.Addp).subscribe((data: any) => {
-      console.log(data);
-      this.p.push();
+    const formdata = this.Addp.value;
+    this._rest.AddProduct(formdata).subscribe((data: any) => {
+      console.log(data); 
       this.Addp.reset();
+      this.pp.push();
     }, (err: any) => {
       console.log(err);
     })
@@ -253,7 +253,7 @@ export class ProductComponent implements OnInit {
 
   editproduct(i: number) {
     this.selectedproduct = 1;
-    this.Editp.patchValue(this.p[i - 1]);
+    this.Editp.patchValue(this.pp[i - 1]);
   }
 
   editproducts() {

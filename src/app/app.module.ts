@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { EnquiryComponent } from './pages/enquiry/enquiry.component';
+import { ViewproductComponent } from './pages/viewproduct/viewproduct.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EnquiryComponent } from './pages/enquiry/enquiry.component';
     SidebarComponent,
     WishlistComponent,
     FooterComponent,
-    EnquiryComponent
+    EnquiryComponent,
+    ViewproductComponent
 
   ],
   imports: [

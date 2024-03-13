@@ -161,7 +161,7 @@
                                             (change)="onFileChange($event)">
                                     </div>
                                     <div class="form-group col-12">
-                                        <button class="btn btn-primary" type="submit">Submilt</button>
+                                        <button class="btn btn-primary" type="submit">Submit</button>
                                         <!-- <button type="submit" class="submit-btn" (click)="addimg1()">पुढे जा</button> -->
                                     </div>
                                 </div>
@@ -222,19 +222,6 @@
                                 <input type="number" name="discount" class="form-control" id="discount"
                                     formControlName="discount" placeholder="Enter Discount." required>
                             </div>
-
-                            <!-- <div class="col-md-12">
-                                <label for="Amount">Amount:</label>
-                                <input type="number" name="Amount" class="form-control" id="Amount"
-                                    formControlName="Amount" placeholder="Enter Amount." required>
-                            </div> -->
-
-                            <!-- <div class="col-md-12">
-                                <label for="pricewithdiscount">pricewith discounts:</label>
-                                <input type="number" name="pricewithdiscount" class="form-control"
-                                    id="pricewithdiscount" formControlName="pricewithdiscount"
-                                    placeholder="Enter pricewithdiscount." required>
-                            </div> -->
 
                             <div class="col-md-12">
                                 <label for="Weight">Weight:</label>
@@ -372,7 +359,8 @@
                                 </div>
                             </div>
                             <br><br>
-                        </form> -->
+                        </form>
+                     -->
 
 
                     </div>
@@ -388,8 +376,7 @@
             <h2>Product's</h2>
             <br>
             <div class="row">
-                <div class="col-md-2" *ngFor="let ii of image">
-
+                <div class="col-md-2" *ngFor="let ii of ">
                     <!-- <div class="card">
                         <div class="card-body">
                             <img [src]="ii.image">
@@ -397,78 +384,32 @@
                         </div>
                     </div> -->
                 </div>
-
             </div>
 
             <div class="row">
-                <!-- <div class="col-md-4"
-                    *ngFor="let p of Allproducts | paginate: { itemsPerPage: 9, currentPage: pro }, let i=index">
-                    <div class="card">
-                        <div class="card-body">
-                            <img [src]="p.image" width="100%" alt="">
-                            <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br><br>
-                            <h6>{{p.weight}}</h6>
-                            <h4>&#8377; {{p.price}}</h4>
-
-                            <br>
-                            <div class="text-end">
-                                <button type="button" (click)="delete(p['Product_id'])" class="btn btn-danger"><i
-                                        class="fa-regular fa-trash-can"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <pagination-controls (pageChange)="pro = $event"></pagination-controls>
-                </div> -->
-                <!-- 
-                <div class="col-md-6"
-                    *ngFor="let p of Products | paginate :{itemsPerPage :2 ,currentPage : pro},let i=index">
-                    <div class="card">
-                        <div class="card-body" style="overflow-y: scroll; height: 500px;">
-
-                            <button type="button" (click)="editproduct(p.product_id)" class="btn btn-info"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-
-                            <div class="text-end">
-                                <button type="button" (click)="delete(p['product_id'])" class="btn btn-danger"><i
-                                        class="fa-regular fa-trash-can"></i></button>
-                            </div>
-                            <img [src]="p.image2" width="100%" alt="">
-                            <h4 class="card-title"><b>{{p.productname}}</b></h4> <br><br>
-                            <h6>{{p.weight}}SER</h6>
-                            <h4>&#8377; {{p.price}}</h4>
-                            <p>{{p.description}}</p> <br>
-                            <b>Ingredients</b>
-                            <p>{{p.ingredients}}</p>
-                            <br>
-                            <p>{{p.benefits}}</p>
-                            <br>
-                        </div>
-                    </div>
-                </div> -->
-
-                <div class="col-md-6" *ngFor="let p of p | paginate :{itemsPerPage :4 ,currentPage : pro},let i=index">
+                <div class="col-md-6" *ngFor="let p of pp | paginate :{itemsPerPage :4 ,currentPage : pro},let i=index">
 
                     <div class="card">
                         <div class="card-body" style="overflow-y: scroll; height: 500px;">
-                            <button type="button" (click)="editproduct(p.id)" class="btn btn-info"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
+                            <a type="button" (click)="editproduct(p.id)" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1">
+                                <i class="fa-solid fa-pen-to-square fa-xl" style="color: green
+                                ;"></i>
+                            </a>
+                            <span style="float:right;"> <a type="button" (click)="delete(p['id'])">
+                                    <i class="fa-regular fa-trash-can fa-xl " style="color: red;"></i></a></span>
 
-                            <div class="text-end">
-                                <button type="button" (click)="delete(p['id'])" class="btn btn-danger"><i
-                                        class="fa-regular fa-trash-can"></i></button>
+                            <div>
+
+                                <br>
                             </div>
-                            <img [src]="p.image" alt="">
+                            <br>
+                            <img [src]="p.image" alt="" [routerLink]="['/viewproduct',p.id]"> <br>
                             <!-- <img [src]="p.mainimage" alt=""> -->
                             <!-- <img [src]="p.mainimage" width="100%" alt=""> -->
                             <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br><br>
                             <h6><b>Weight</b>: {{p.Weight}}</h6>
-                            <h6> <b>Actual Price: </b> <b>&#8377; {{p.Price}}</b></h6>
+                            <h6><b>Actual Price: </b> <b>&#8377; {{p.Price}}</b></h6>
                             <p><b>Discount:</b> {{p.discount}}%</p>
                             <p><b>Discount Price:</b> &#8377; {{p.pricewithdiscount}}</p>
                             <b>Description :</b>
@@ -480,14 +421,19 @@
                             <p>{{p.benefits}}</p>
                             <br>
                             <br>
-                       
+
                             <div id="carouselExample" class="carousel slide">
-                                <div class="carousel-inner">
+                                <!-- <div class="carousel-inner">
                                     <div class="carousel-item" *ngFor="let image of p; let i = index"
                                         [class.active]="i === 0">
                                         <img [src]="image.mainimage" class="d-block w-100" alt="...">
                                     </div>
+                                </div> -->
+                                <div class="carousel-item" *ngFor="let image of images; let i = index"
+                                    [class.active]="i === 0">
+                                    <img style="width: 100%;" [src]="image.mainimage" class="d-block w-100" alt="...">
                                 </div>
+
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                                     data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

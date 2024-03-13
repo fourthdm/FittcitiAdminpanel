@@ -1,0 +1,86 @@
+<div class="main">
+    <br><br><br><br><br>
+    <div class="col-md-6">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item" *ngFor="let image of imagess; let i = index" [class.active]="i === 0">
+                    <img [src]="image.mainimage" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <br><br>
+    </div>
+
+    <div class="container">
+        <div class="row" *ngFor="let p of productList, let i=index">
+            <br>
+            <div class="col-md-6">
+                <!-- <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let image of imagess; let i = index"
+                            [class.active]="i === 0">
+                            <img [src]="image.mainimage" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div> -->
+                <br><br>
+            </div>
+
+            <div class="col-md-6">
+                <a type="button" (click)="editproduct(p.id)" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                    <i class="fa-solid fa-pen-to-square fa-xl" style="color: green
+                ;"></i>
+                </a>
+                <span style="float:right;"> <a type="button" (click)="delete(p['id'])">
+                        <i class="fa-regular fa-trash-can fa-xl " style="color: red;"></i></a></span>
+
+
+                <br>
+                <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br>
+                <h6>{{p.Weight}}</h6>
+                <h4 style="color: red;">&#8377; {{p.Price}}</h4>
+                <p>{{p.discount}}% Discount</p>
+                <p>&#8377; {{p.pricewithdiscount}}</p>
+                <br>
+                <!-- <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button class="btn btn-light" (click)="handlequantity('min')">
+                        <h5>-</h5>
+                    </button>
+                    <button type="button" class="btn  btn-secondary"><b>{{pq}}</b></button>
+                    <button class="btn btn-light" (click)="handlequantity('plus')">
+                        <h5>+</h5>
+                    </button>
+                </div> -->
+                <br> <br>
+                <button class="btn btn-lg btn-info" (click)="addToCart(p)"><i class="fa-solid fa-cart-plus fa-lg"></i>
+                    <b> Add To Cart </b></button>
+                <br>
+            </div>
+            <h5> <b>Description :</b></h5>
+            <p>{{p.description}} </p> <br>
+            <h5><b>Ingredients :</b></h5>
+            <p>{{p.ingredients}}</p>
+            <br>
+            <h5><b>Benefits:</b></h5>
+            <p>{{p.benefits}}</p>
+        </div>
+    </div>
+</div>

@@ -164,8 +164,8 @@ export class RestService {
   product() {
     return this._http.get(this.url3 + '/Product');
   }
-  
-  Productss(){
+
+  Productss() {
     return this._http.get(this.url3 + '/prod');
   }
 
@@ -197,8 +197,18 @@ export class RestService {
     return this._http.get(this.url3 + '/AllordersforAdmin');
   }
 
-  showimages(data: any) {
-    return this._http.get(this.url3 + '/Showimg' , data.product_id);
+  showimages(product_id: string) {
+    return this._http.get(this.url3 + '/Showimages/' + product_id);
+  }
+
+
+
+  productwithmain(id: string) {
+    return this._http.get(this.url3 + '/Productwithimages/' + id);
+  }
+
+  onlyproduct(id:string){
+    return this._http.get(this.url3 + '/onlyproduct/' + id);
   }
 
 }
