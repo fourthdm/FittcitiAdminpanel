@@ -201,13 +201,11 @@ export class RestService {
     return this._http.get(this.url3 + '/Showimages/' + product_id);
   }
 
-
-
   productwithmain(id: string) {
     return this._http.get(this.url3 + '/Productwithimages/' + id);
   }
 
-  onlyproduct(id:string){
+  onlyproduct(id: string) {
     return this._http.get(this.url3 + '/onlyproduct/' + id);
   }
 
