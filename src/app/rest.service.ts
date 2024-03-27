@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -77,8 +78,10 @@ export class RestService {
 
   // End Brands APi
 
-  // url2 = "http://localhost:4000";
-
+  url2 = "http://localhost:4000";
+  uploadImage(imageData: FormData): Observable<any> {
+    return this._http.post<any>(`${this.url2}/upload-image`, imageData);
+  }
   // Addnewproduct(data: any) {
   //   return this._http.post(this.url2 + '/addproducts', data);
   // }
@@ -112,6 +115,12 @@ export class RestService {
   Addimages(data: any) {
     return this._http.post(this.url3 + '/upload', data);
   }
+
+  Addsingleimg(imageForm: FormData) {
+    console.log('image uploading');
+    return this._http.post(this.url3 + '/upload/single', imageForm);
+  }
+
 
   images() {
     return this._http.get(this.url3 + '/Showimages');
@@ -208,6 +217,8 @@ export class RestService {
   onlyproduct(id: string) {
     return this._http.get(this.url3 + '/onlyproduct/' + id);
   }
+
+
 
 }
 

@@ -31,7 +31,9 @@ export class ViewproductComponent implements OnInit {
 
 
   productList: any[] = [];
+
   imagess: any[] = [];
+
   pro: any;
   constructor(private _rest: RestService, private _activeroute: ActivatedRoute) {
     this.Editp = new FormGroup({
@@ -73,6 +75,10 @@ export class ViewproductComponent implements OnInit {
     this.productList.forEach((a: any) => {
       Object.assign(a, { quantity: 1, total: a.pricewithdiscount });
     });
+  }
+
+  getimages(){
+    this._rest
   }
 
   addToCart(product: any) {

@@ -9,7 +9,9 @@ import { RestService } from 'src/app/rest.service';
 })
 export class WishlistComponent implements OnInit {
 
-  pro:any
+  selectedFile: File | null = null; // Initialize as null
+  image: string | null = null;
+  pro: any
   wishlist: any[] = [];
 
   constructor(private _rest: RestService) { }
@@ -26,5 +28,27 @@ export class WishlistComponent implements OnInit {
       console.log(err);
     })
   }
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0]; // Update selected file
+  }
 
+  onUpload(): void {
+    if (!this.selectedFile) {
+      console.error('No file selected');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('imageData', this.selectedFile, this.selectedFile.name);
+
+    this._rest.uploadImage(formData).subscribe(
+      (response) => {
+        console.log('Image uploaded successfully');
+        this.image = response.image;
+      },
+      (error) => {
+        console.error('Failed to upload image:', error);
+      }
+    );
+  }
 }

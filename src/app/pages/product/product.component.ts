@@ -10,6 +10,9 @@ import { RestService } from 'src/app/rest.service';
 })
 export class ProductComponent implements OnInit {
 
+  // imageObj: File;
+  // imageUrl: string;
+
   pro: number = 1;
   Products: any[] = [];
   images: any[] = [];
@@ -86,7 +89,7 @@ export class ProductComponent implements OnInit {
     // this.GetPod();
     // this.GetProduct();
     // this.newdatbaseproducts();
-    this.show();
+    // this.show();
     // this.single();
   }
 
@@ -206,11 +209,7 @@ export class ProductComponent implements OnInit {
   // }
 
 
-  onFileChange(event: any) {
-    for (var i = 0; i < event.target.files.length; i++) {
-      this.Products.push(event.target.files[i]);
-    }
-  }
+
 
   product() {
     this._rest.product().subscribe((data: any) => {
@@ -221,13 +220,13 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  show() {
-    this._rest.images().subscribe((data) => {
-      console.log(data);
-      // this.Imagess = data.data;
-      this.images = (data as any)['data'];
-    }, err => console.log(err));
-  }
+  // show() {
+  //   this._rest.images().subscribe((data) => {
+  //     console.log(data);
+  //     // this.Imagess = data.data;
+  //     this.images = (data as any)['data'];
+  //   }, err => console.log(err));
+  // }
 
   addimg1() {
     if (this.ADDimg.valid) {
@@ -239,11 +238,16 @@ export class ProductComponent implements OnInit {
       })
     }
   }
+  onFileChange(event: any) {
+    for (var i = 0; i < event.target.files.length; i++) {
+      this.Products.push(event.target.files[i]);
+    }
+  }
 
   productAdd() {
     const formdata = this.Addp.value;
     this._rest.AddProduct(formdata).subscribe((data: any) => {
-      console.log(data); 
+      console.log(data);
       this.Addp.reset();
       this.pp.push();
     }, (err: any) => {
@@ -278,4 +282,20 @@ export class ProductComponent implements OnInit {
     }
   }
 
+
+
+
+  // onImagePicked(event: Event): void {
+  //   // const FILE = (event.target as HTMLInputElement).files[0];
+  //   const FILE = (event.target as HTMLInputElement).files[0];
+  //   this.imageObj = FILE;
+  // }
+
+  // onImageUpload() {
+  //   const imageForm = new FormData();
+  //   imageForm.append('image', this.imageObj);
+  //   this._rest.Addsingleimg(imageForm).subscribe((res:any) => {
+  //     this.imageUrl = res['image'];
+  //   });
+  // }
 }

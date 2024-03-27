@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { EnquiryComponent } from './pages/enquiry/enquiry.component';
 import { ViewproductComponent } from './pages/viewproduct/viewproduct.component';
+import { CartsComponent } from './pages/carts/carts.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ViewproductComponent } from './pages/viewproduct/viewproduct.component'
     WishlistComponent,
     FooterComponent,
     EnquiryComponent,
-    ViewproductComponent
+    ViewproductComponent,
+    CartsComponent
 
   ],
   imports: [

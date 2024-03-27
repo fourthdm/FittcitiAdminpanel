@@ -1,4 +1,6 @@
 <div class="content-wrapper">
+    <br><br>
+
     <!-- <div class="container">
     <div class="row">
         <div class="col-md-6" *ngFor="let p of Allproducts">
@@ -126,11 +128,11 @@
             </button>
         </div>
         <br>
-        <div class="text-end">
+        <!-- <div class="text-end">
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addimages">
                 Add Images <i class="fa-regular fa-plus"></i>
             </button>
-        </div>
+        </div> -->
 
         <div class="modal fade" id="addimages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -142,31 +144,36 @@
                     <div class="modal-body">
                         <div class="col-md-6">
                             <h3 class="text-22 text-midnight text-bold mb-4">Add image</h3>
+
                             <form [formGroup]="ADDimg" (ngSubmit)="addimg1()">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
-                                        <div class="input-label">
-                                            <label>Product id</label>
-                                        </div>
+                                        <div class="input-label"> <label>Product id</label> </div>
                                         <input type="text" class="form-control" placeholder=""
                                             formControlName="product_id">
                                     </div>
 
                                     <div class="form-group col-lg-6">
-                                        <div class="input-label">
-                                            <label>img</label>
-                                        </div>
+                                        <div class="input-label"> <label>img</label></div>
                                         <input type="file" class="form-control" placeholder=""
                                             formControlName="mainimage" multiple class="form-control"
                                             (change)="onFileChange($event)">
                                     </div>
                                     <div class="form-group col-12">
                                         <button class="btn btn-primary" type="submit">Submit</button>
-                                        <!-- <button type="submit" class="submit-btn" (click)="addimg1()">पुढे जा</button> -->
                                     </div>
                                 </div>
-
                             </form>
+
+
+                            <!-- <input (change)="onImagePicked($event)" placeholder="Upload Image" type="file" />
+                            <button (click)="onImageUpload()">Upload Image</button>
+
+                            <div *ngIf="imageUrl">
+                                Preview Image from AWS
+                                <br />
+                                <img width="200px" src="https://YOUR S3 BUCKET NAME.s3.amazonaws.com/{{ images }}" />
+                            </div> -->
                         </div>
                     </div>
 
