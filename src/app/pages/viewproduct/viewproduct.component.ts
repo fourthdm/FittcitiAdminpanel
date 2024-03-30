@@ -23,8 +23,6 @@ export class ViewproductComponent implements OnInit {
   prod: any[] = [];
 
   Editp: FormGroup;
-
-
   product_id: any;
 
   selectedproduct: any = null;
@@ -56,28 +54,16 @@ export class ViewproductComponent implements OnInit {
 
   getproduct() {
     const id = this._activeroute.snapshot.paramMap.get('id');
-    // const product_id = this._activeroute.snapshot.paramMap.get('product_id');
-    // console.log(id);
-
-    // product_id && this._rest.showimages(product_id).subscribe((data: any) => {
-    //   this.imagess = data.data;
-    // }, (err: any) => {
-    //   console.log(err);
-    // })
-
-
-    id && this._rest.onlyproduct(id).subscribe((data: any) => {
+    console.log(id);
+    id && this._rest.productwithmain(id).subscribe((data: any) => {
       this.productList = data.data;
     }, (err: any) => {
       console.log(err);
     })
 
-    this.productList.forEach((a: any) => {
-      Object.assign(a, { quantity: 1, total: a.pricewithdiscount });
-    });
   }
 
-  getimages(){
+  getimages() {
     this._rest
   }
 
@@ -85,10 +71,9 @@ export class ViewproductComponent implements OnInit {
     // this._cart.addtoCart(product);
   }
 
-
   editproduct(i: number) {
     this.selectedproduct = 1;
-    this.Editp.patchValue(this.productList[i - 1]);
+    this.Editp.patchValue(this.pp[i - 1]);
   }
 
   editproducts() {
@@ -102,16 +87,6 @@ export class ViewproductComponent implements OnInit {
     })
   }
 
-  delete(id: number) {
-    if (confirm('Are You Sure To Delete It ?')) {
-      this._rest.Deleteproduct(id).subscribe(resp => {
-        console.log(resp);
-      this.ngOnInit();
-      }, err => {
-        console.log(err);
-      });
-    }
-  }
 
 
 }

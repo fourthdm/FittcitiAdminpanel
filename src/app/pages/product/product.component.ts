@@ -50,25 +50,7 @@ export class ProductComponent implements OnInit {
       product_id: new FormControl('', [Validators.required]),
       mainimage: new FormControl('', [Validators.required])
     })
-
-
-    // this.AddProductForm = new FormGroup({
-    //   productname: new FormControl('', [Validators.required]),
-    //   description: new FormControl('', [Validators.required]),
-    //   benefits: new FormControl('', [Validators.required]),
-    //   ingredients: new FormControl('', [Validators.required]),
-    //   price: new FormControl('', [Validators.required]),
-    //   discount: new FormControl('', [Validators.required]),
-    //   pricewithdiscount: new FormControl('', [Validators.required]),
-    //   weight: new FormControl('', [Validators.required]),
-    //   image: new FormControl('', [Validators.required]),
-    //   mainimage: new FormControl('', [Validators.required]),
-    //   backimage: new FormControl('', [Validators.required]),
-    //   tableimage: new FormControl('', [Validators.required]),
-    //   category_id: new FormControl('', [Validators.required]),
-    //   brand_id: new FormControl('', [Validators.required]),
-    // })
-
+   
     this.Editp = new FormGroup({
       id: new FormControl(),
       Product_Name: new FormControl('', [Validators.required]),
@@ -156,23 +138,7 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  // GetPod() {
-  //   this._rest.GetProd().subscribe((data: any) => {
-  //     console.log(data);
-  //     this.prod = data.data;
-  //   }, (err) => {
-  //     console.log(err);
-  //   })
-  // }
-
-  // newdatbaseproducts() {
-  //   this._rest.Productsss().subscribe((data: any) => {
-  //     console.log(data);
-  //     this.Products = data.data;
-  //   }, (err: any) => {
-  //     console.log(err)
-  //   })
-  // }
+  
 
   Allcategory() {
     this._rest.Category().subscribe((result: any) => {
@@ -182,34 +148,6 @@ export class ProductComponent implements OnInit {
       console.log(err);
     })
   }
-
-  // delete(Product_id: any) {
-  //   if (confirm('Are You Sure To Delete It ?')) {
-  //     this._rest.  DeletenewdatabaseProducts(product_id:any){
-  //       (Product_id).subscribe(resp => {
-  //       console.log(resp);
-  //       this.GetProduct();
-  //     }, err => {
-  //       console.log(err);
-  //       this.GetProduct();
-  //     });
-  //   }
-  // }
-
-
-  // delete(product_id: number) {
-  //   if (confirm('Are You Sure To Delete It ?')) {
-  //     this._rest.DeletenewdatabaseProducts(product_id).subscribe(resp => {
-  //       console.log(resp);
-  //       this.newdatbaseproducts();
-  //     }, err => {
-  //       console.log(err);
-  //     });
-  //   }
-  // }
-
-
-
 
   product() {
     this._rest.product().subscribe((data: any) => {

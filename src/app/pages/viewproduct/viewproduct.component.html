@@ -1,33 +1,13 @@
 <div class="main">
     <br><br><br><br><br>
-    <div class="col-md-6">
-        <div id="carouselExample" class="carousel slide">
-            <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let image of imagess; let i = index" [class.active]="i === 0">
-                    <img [src]="image.mainimage" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-        <br><br>
-    </div>
-
     <div class="container">
         <div class="row" *ngFor="let p of productList, let i=index">
             <br>
             <div class="col-md-6">
-                <!-- <div id="carouselExample" class="carousel slide">
+                <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
-                        <div class="carousel-item" *ngFor="let image of imagess; let i = index"
-                            [class.active]="i === 0">
-                            <img [src]="image.mainimage" class="d-block w-100" alt="...">
+                        <div class="carousel-item" [class.active]="i === 0">
+                            <img [src]="p.mainimage" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
@@ -40,39 +20,20 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
-                </div> -->
+                </div>
                 <br><br>
             </div>
 
             <div class="col-md-6">
                 <!-- <a type="button" (click)="editproduct(p.id)" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                     <i class="fa-solid fa-pen-to-square fa-xl" style="color: green;"></i>
-                </a>
-
-
-
-                <span style="float:right;"> <a type="button" (click)="delete(p['id'])">
-                        <i class="fa-regular fa-trash-can fa-xl " style="color: red;"></i></a></span> -->
-
+                </a> -->
                 <br>
                 <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br>
                 <h6>{{p.Weight}}</h6>
                 <h4 style="color: red;">&#8377; {{p.Price}}</h4>
                 <p>{{p.discount}}% Discount</p>
                 <p>&#8377; {{p.pricewithdiscount}}</p>
-                <br>
-                <!-- <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button class="btn btn-light" (click)="handlequantity('min')">
-                        <h5>-</h5>
-                    </button>
-                    <button type="button" class="btn  btn-secondary"><b>{{pq}}</b></button>
-                    <button class="btn btn-light" (click)="handlequantity('plus')">
-                        <h5>+</h5>
-                    </button>
-                </div> -->
-                <br> <br>
-                <button class="btn btn-lg btn-info" (click)="addToCart(p)"><i class="fa-solid fa-cart-plus fa-lg"></i>
-                    <b> Add To Cart </b></button>
                 <br>
             </div>
             <h5> <b>Description :</b></h5>
@@ -82,6 +43,87 @@
             <br>
             <h5><b>Benefits:</b></h5>
             <p>{{p.benefits}}</p>
+            <br>
+
+        </div>
+        <br>
+    </div>
+    <!-- <hr> -->
+    <br>
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="Editp" (submit)="editproducts()">
+
+                        <div class="col-md-12">
+                            <label for="Product_Name">Product Name:</label>
+                            <input type="text" name="Product_Name" class="form-control" id="Product_Name"
+                                formControlName="Product_Name" value="" placeholder="Enter Product Name " required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="description">description :</label>
+                            <textarea type="text" name="description" class="form-control" id="description"
+                                formControlName="description" value="" placeholder="Enter description" required>
+                       </textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="benefits">Benefits :</label>
+                            <textarea type="text" name="benefits" class="form-control" id="benefits"
+                                formControlName="benefits" value="" placeholder="Enter benefits" required>
+                        </textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="ingredients">ingredients</label>
+                            <textarea type="text" name="ingredients" class="form-control" id="ingredients"
+                                formControlName="ingredients" value="" placeholder="Enter ingredients" required>
+                       </textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="Price">price:</label>
+                            <input type="number" name="Price" class="form-control" id="Price" formControlName="Price"
+                                placeholder="Enter Price." required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="discount">Discount:</label>
+                            <input type="number" name="discount" class="form-control" id="discount"
+                                formControlName="discount" placeholder="Enter Discount." required>
+                        </div>
+                       
+                        <div class="col-md-12">
+                            <label for="Weight">Weight:</label>
+                            <input type="text" name="Weight" class="form-control" id="Weight" formControlName="Weight"
+                                placeholder="Enter weight of Product" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="Category_id">Category ID :</label>
+                            <input type="number" name="Category_id" class="form-control" id="Category_id"
+                                formControlName="Category_id" value="" placeholder="Enter Category id" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="Brand_id">Brand ID :</label>
+                            <input type="number" name="Brand_id" class="form-control" id="Brand_id"
+                                formControlName="Brand_id" value="" placeholder="Enter Brand id" required>
+                        </div>
+
+                        <br>
+                        <button type="submit" class="btn btn-success">Edit Product</button>
+                    </form>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
