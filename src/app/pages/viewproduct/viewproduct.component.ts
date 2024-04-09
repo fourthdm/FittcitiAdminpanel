@@ -2,6 +2,9 @@ import { Component, OnInit, mergeApplicationConfig } from '@angular/core';
 
 import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { LightGallery } from 'lightgallery/lightgallery';
+
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { RestService } from 'src/app/rest.service';
 
 @Component({
@@ -26,10 +29,11 @@ export class ViewproductComponent implements OnInit {
   product_id: any;
 
   selectedproduct: any = null;
-
+  selectedImage: string = '';
+  imageSize = 430;
 
   productList: any[] = [];
-
+  mainImages: any[] = [];
   imagess: any[] = [];
 
   pro: any;
@@ -48,15 +52,75 @@ export class ViewproductComponent implements OnInit {
     })
   }
 
+  productImages = [
+    { url: 'https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/L-GLUTAMINE-UNFLAVOURED.jpg' },
+    { url: 'https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/L-GLUTAMINE-UNFLAVOURED.jpg' },
+    { url: 'https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/L-GLUTAMINE-UNFLAVOURED.jpg' }]
+
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
+
+
+
+
   ngOnInit(): void {
     this.getproduct();
+    // this.getimages();
+
+    // this._activeroute.params.subscribe(params => {
+    //   const id = params['id'];
+    //   this._rest.productwithmain(id).subscribe((data:any) => {
+
+    //     if (data.success) {
+    //       this.productList = data.data;
+    //       console.log('Products:', this.productList); // Log fetched products for debugging
+    //     } else {
+    //       console.error('Failed to fetch product data:', data.message);
+    //     }
+    //   }, error => {
+    //     console.error('Error fetching product data:', error);
+    //   });
+    // });
+  }
+
+  changeimage(image: string) {
+    this.selectedImage = image;
   }
 
   getproduct() {
     const id = this._activeroute.snapshot.paramMap.get('id');
     console.log(id);
     id && this._rest.productwithmain(id).subscribe((data: any) => {
-      this.productList = data.data;
+      // this.productList = data.data;
+      if (data.success) {
+        this.productList = data.data;
+        this.mainImages = data.data[0].mainimage.split(','); // Split mainimage string into an array
+      } else {
+        console.error('Error fetching product:', data.message);
+      }
     }, (err: any) => {
       console.log(err);
     })
@@ -64,7 +128,19 @@ export class ViewproductComponent implements OnInit {
   }
 
   getimages() {
-    this._rest
+    const id = this._activeroute.snapshot.paramMap.get('id');
+    console.log(id);
+    id && this._rest.mainimage(id).subscribe((data: any) => {
+      this.imagess = data.data;
+    }, (err: any) => {
+      console.log(err);
+    })
+
+    // this._rest.mainimage().subscribe((data: any) => {
+    //   this.imagess = data.data;
+    // }, (err: any) => {
+    //   console.log(err);
+    // })
   }
 
   addToCart(product: any) {
@@ -86,7 +162,4 @@ export class ViewproductComponent implements OnInit {
       console.log(err);
     })
   }
-
-
-
 }

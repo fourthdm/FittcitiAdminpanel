@@ -23,6 +23,9 @@ import { EnquiryComponent } from './pages/enquiry/enquiry.component';
 import { ViewproductComponent } from './pages/viewproduct/viewproduct.component';
 import { CartsComponent } from './pages/carts/carts.component';
 
+import { LightgalleryModule } from 'lightgallery/angular';
+// import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +53,9 @@ import { CartsComponent } from './pages/carts/carts.component';
     HttpClientModule,
     NgxPaginationModule,
     ToastrModule.forRoot(),
+    LightgalleryModule,
+    CarouselModule,
+    
   ],
 
   providers: [],

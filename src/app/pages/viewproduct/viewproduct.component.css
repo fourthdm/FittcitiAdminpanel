@@ -1,0 +1,38 @@
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.4/css/lightgallery.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.4/css/lg-zoom.css');
+body {
+  margin: 0;
+}
+.gallery-item {
+  margin: 5px;
+}
+
+
+
+
+
+
+.product-gallery__featured {
+    border-radius: 8px;
+    border: solid 1px #F0F3F4;
+    background-color: #fff;
+  }
+  
+  .product-gallery__carousel {
+    margin-top: 9px;
+  
+    owl-carousel-o img{
+      border-radius: 8px;
+      border: solid 1px #F0F3F4;
+    }
+  }
+  
+  .product-gallery__carousel-item--active {
+    border: solid 1px #459AD4 !important;
+  }
+  
+  owl-carousel-o::ng-deep{
+      img{
+        border-radius: 8px;
+      }
+  }

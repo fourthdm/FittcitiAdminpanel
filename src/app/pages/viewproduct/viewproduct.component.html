@@ -1,4 +1,36 @@
 <div class="main">
+
+    <!-- <carousel *ngFor="let product of productList">
+        <div *ngFor="let image of product.mainimage">
+            <img [src]="image.mainimage" alt="carousel-image">
+        </div>
+    </carousel> -->
+
+
+    <div *ngIf="productList">
+        <!-- <h2>{{ product.Product_Name }}</h2>
+        <p>{{ product.description }}</p> -->
+        <div *ngIf="mainImages.length > 0">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item" *ngFor="let image of mainImages; let i = index" [ngClass]="{'active': i === 0}">
+                <img class="d-block w-100" [src]="'http://localhost:5000/images/' + image" alt="Slide {{i}}">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+
+
     <br><br><br><br><br>
     <div class="container">
         <div class="row" *ngFor="let p of productList, let i=index">
@@ -6,8 +38,9 @@
             <div class="col-md-6">
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
-                        <div class="carousel-item" [class.active]="i === 0">
-                            <img [src]="p.mainimage" class="d-block w-100" alt="...">
+                        <div class="carousel-item" *ngFor="let image of p.mainimage; let i = index"
+                            [class.active]="i === 0">
+                            <img [src]="image" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
@@ -28,6 +61,7 @@
                 <!-- <a type="button" (click)="editproduct(p.id)" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                     <i class="fa-solid fa-pen-to-square fa-xl" style="color: green;"></i>
                 </a> -->
+                <!-- <img [src]="p.mainimage" class="d-block w-100" alt="..."> -->
                 <br>
                 <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br>
                 <h6>{{p.Weight}}</h6>
@@ -50,7 +84,7 @@
     </div>
     <!-- <hr> -->
     <br>
-
+    <!-- 
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -99,7 +133,7 @@
                             <input type="number" name="discount" class="form-control" id="discount"
                                 formControlName="discount" placeholder="Enter Discount." required>
                         </div>
-                       
+
                         <div class="col-md-12">
                             <label for="Weight">Weight:</label>
                             <input type="text" name="Weight" class="form-control" id="Weight" formControlName="Weight"
@@ -125,5 +159,20 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
+
+
+<!-- 
+<div class="container">
+    <owl-carousel-o [options]="customOptions" #owlCat>
+        <ng-container *ngFor="let image of imagess">
+            <ng-template carouselSlide let-owlItem>
+          
+                <div class="slide" [@activeSlide]="owlItem.isCentered ? 'active' : 'inActive'">
+                    <img [src]="image.mainimage" [alt]="image.alt" [title]="image.title">
+                </div>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+</div> -->

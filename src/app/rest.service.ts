@@ -219,6 +219,9 @@ export class RestService {
   }
 
 
+  mainimage(id: string) {
+    return this._http.get(this.url3 + '/Productwithmainimage/' + id);
+  }
 
 }
 
