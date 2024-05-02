@@ -2,7 +2,7 @@
     <div class="container">
         <br>
         <div class="text-center">
-            <h1>User's Data</h1>
+            <h1>User's Information</h1>
         </div>
         <br>
         <div class="text-end">
@@ -16,19 +16,20 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col"> <b>User Id </b> </th>
+                        <th scope="col"> <b>Sr.No. </b> </th>
+                        <th scope="col"> <b>User_Id </b> </th>
                         <th scope="col"> <b>Name</b> </th>
                         <th scope="col"> <b>User Name </b> </th>
                         <th scope="col"> <b>Email </b> </th>
                         <th scope="col"> <b>Address </b> </th>
                         <th scope="col"> <b>Mobile No</b> </th>
-                        <!-- <th scope="col"> <b>Edit User </b> </th> -->
                         <th scope="col"> <b>Delete User</b> </th>
 
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let u of Allusers | paginate: { itemsPerPage: 12, currentPage: pro }, let i =index">
+                        <td>{{i+1}}</td>
                         <td>{{u.User_id}}</td>
                         <td>{{u.Name}}</td>
                         <td>{{u.Username}}</td>

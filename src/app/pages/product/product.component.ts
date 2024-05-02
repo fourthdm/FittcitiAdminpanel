@@ -34,6 +34,7 @@ export class ProductComponent implements OnInit {
   constructor(private _rest: RestService) {
 
     this.Addp = new FormGroup({
+      status: new FormControl(),
       Product_Name: new FormControl('', [Validators.required]),
       Weight: new FormControl('', [Validators.required]),
       Price: new FormControl('', [Validators.required]),
@@ -50,9 +51,10 @@ export class ProductComponent implements OnInit {
       product_id: new FormControl('', [Validators.required]),
       mainimage: new FormControl('', [Validators.required])
     })
-   
+
     this.Editp = new FormGroup({
       id: new FormControl(),
+      status: new FormControl(),
       Product_Name: new FormControl('', [Validators.required]),
       Weight: new FormControl('', [Validators.required]),
       Price: new FormControl('', [Validators.required]),
@@ -63,7 +65,6 @@ export class ProductComponent implements OnInit {
       benefits: new FormControl('', [Validators.required]),
       ingredients: new FormControl('', [Validators.required]),
     })
-
   }
 
   ngOnInit(): void {
@@ -138,8 +139,6 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  
-
   Allcategory() {
     this._rest.Category().subscribe((result: any) => {
       console.log(result);
@@ -210,7 +209,7 @@ export class ProductComponent implements OnInit {
   }
 
   delete(id: number) {
-    if (confirm('Are You Sure To Delete It ?')) {
+    if (confirm('Are You Sure To Delete Product?')) {
       this._rest.Deleteproduct(id).subscribe(resp => {
         console.log(resp);
         this.product();
@@ -221,8 +220,21 @@ export class ProductComponent implements OnInit {
   }
 
 
-
-
+  getStyle(product: any): any {
+    if (product.status == "1") {
+      return {
+        'color': 'green',
+        // 'text':'Product is in Stock',
+        // 'border': '2px solid green'
+      }
+    } else if (product.status == "0") {
+      return {
+        'color': 'red',
+        // 'text':'Product is in Stock',
+        // 'border': '2px solid red'
+      }
+    }
+  }
   // onImagePicked(event: Event): void {
   //   // const FILE = (event.target as HTMLInputElement).files[0];
   //   const FILE = (event.target as HTMLInputElement).files[0];

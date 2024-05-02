@@ -32,7 +32,7 @@ export class ViewproductComponent implements OnInit {
   selectedImage: string = '';
   imageSize = 430;
 
-  productList: any[] = [];
+  productList: any;
   mainImages: any[] = [];
   imagess: any[] = [];
 
@@ -52,41 +52,7 @@ export class ViewproductComponent implements OnInit {
     })
   }
 
-  productImages = [
-    { url: 'https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/L-GLUTAMINE-UNFLAVOURED.jpg' },
-    { url: 'https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/L-GLUTAMINE-UNFLAVOURED.jpg' },
-    { url: 'https://fourthdm-web-data.s3.ap-south-1.amazonaws.com/L-GLUTAMINE-UNFLAVOURED.jpg' }]
-
-
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  }
-
-
-
-
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.getproduct();
     // this.getimages();
 
@@ -105,6 +71,8 @@ export class ViewproductComponent implements OnInit {
     //   });
     // });
   }
+  // id: string;
+  productData: any;
 
   changeimage(image: string) {
     this.selectedImage = image;
@@ -141,10 +109,6 @@ export class ViewproductComponent implements OnInit {
     // }, (err: any) => {
     //   console.log(err);
     // })
-  }
-
-  addToCart(product: any) {
-    // this._cart.addtoCart(product);
   }
 
   editproduct(i: number) {

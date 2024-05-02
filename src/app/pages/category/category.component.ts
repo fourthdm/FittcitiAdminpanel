@@ -67,7 +67,7 @@ export class CategoryComponent implements OnInit {
   }
 
   delete(Category_id: number) {
-    if (confirm('Are You Sure To Delete It ?')) {
+    if (confirm('Are You Sure To Delete Category?')) {
       this._rest.Deletecategory(Category_id).subscribe(resp => {
         console.log(resp);
         this.AllCategory();

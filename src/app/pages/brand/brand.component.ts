@@ -70,7 +70,7 @@ export class BrandComponent implements OnInit {
   }
 
   delete(Brand_id: number) {
-    if (confirm('Are You Sure To Delete It ?')) {
+    if (confirm('Are You Sure To Delete Brand ?')) {
       this._rest.Deletebrand(Brand_id).subscribe(resp => {
         console.log(resp);
         this.AllBrand();
@@ -80,5 +80,4 @@ export class BrandComponent implements OnInit {
       });
     }
   }
-
 }

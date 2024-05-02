@@ -26,6 +26,7 @@ import { CartsComponent } from './pages/carts/carts.component';
 import { LightgalleryModule } from 'lightgallery/angular';
 // import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { CouponsComponent } from './pages/coupons/coupons.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     FooterComponent,
     EnquiryComponent,
     ViewproductComponent,
-    CartsComponent
+    CartsComponent,
+    CouponsComponent
 
   ],
   imports: [

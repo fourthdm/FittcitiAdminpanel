@@ -11,6 +11,7 @@ import { EnquiryComponent } from './pages/enquiry/enquiry.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ViewproductComponent } from './pages/viewproduct/viewproduct.component';
 import { CartsComponent } from './pages/carts/carts.component';
+import { CouponsComponent } from './pages/coupons/coupons.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'product', pathMatch: 'full' },
@@ -23,13 +24,14 @@ const routes: Routes = [
   { path: 'user', component: UsersComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'enquiry', component: EnquiryComponent },
+  { path: 'coupons', component: CouponsComponent},
   { path: 'cart', component: CartsComponent },
   { path: 'viewproduct/:id', component: ViewproductComponent },
   { path: '**', redirectTo: 'Dashboard' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
