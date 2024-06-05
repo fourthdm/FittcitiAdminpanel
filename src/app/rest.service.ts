@@ -1,19 +1,58 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private _state: StateService) { }
 
-  // url3 = "http://localhost:5000";
-  url3="https://adminpanel.fourthdm.com/node"
+  url3 = "http://localhost:5000";
+  // url3="https://adminpanel.fourthdm.com/node";
+
+  Login(data: any) {
+    return this._http.post(this.url3 + '/Adminlogin', data);
+  }
+
+  Alladmins() {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.get(this.url3 + '/AlladminUsers', { headers });
+  }
+
+  AddNewAdmin(data: any) {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.post(this.url3 + '/AddAdminUser', data, { headers });
+  }
+
+  UpdateAdmin(data: any) {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.put(this.url3 + '/UpdateAdmin/' + data.id, data, { headers });
+  }
+
+  ADDCategoryToken(data: any) {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.post(this.url3 + '/AddCategorybyAdmin', data, { headers });
+  }
+
+  GetAllCatgorybytoken() {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.get(this.url3 + '/AllCatgeorybyAdmin', { headers });
+  }
 
   Addimages(data: any) {
     return this._http.post(this.url3 + '/upload', data);
+  }
+
+  uploadImages(formData: FormData): Observable<any> {
+    return this._http.post(`${this.url3}/upload`, formData);
   }
 
   Addsingleimg(imageForm: FormData) {
@@ -55,6 +94,12 @@ export class RestService {
 
   Brand() {
     return this._http.get(this.url3 + '/Allbrand');
+  }
+
+  AllBrand() {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.get(this.url3 + '/AllBrandToken', { headers });
   }
 
   AddBrand(data: any) {
@@ -145,6 +190,6 @@ export class RestService {
     return this._http.delete(this.url3 + '/DeleteCoupon/' + id);
   }
 
+
+
 }
-
-

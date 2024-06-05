@@ -10,12 +10,36 @@ import { RestService } from 'src/app/rest.service';
 })
 export class ProductComponent implements OnInit {
 
+  selectedFiles: File[] = [];
+
+  onFileSelected(event: any) {
+    this.selectedFiles = event.target.files;
+  }
+  onSubmit() {
+    const product_id = 'your_product_id'; // You may get this from your Angular application logic
+    const formData = new FormData();
+    for (let file of this.selectedFiles) {
+      formData.append('mainimage', file);
+    }
+    formData.append('product_id', product_id);
+
+    this._rest.Addimages(formData).subscribe(
+      (response) => {
+        console.log(response);
+        // Handle success
+      },
+      (error) => {
+        console.error(error);
+        // Handle error
+      }
+    );
+  }
+
   // imageObj: File;
   // imageUrl: string;
 
   pro: number = 1;
   Products: any[] = [];
-  images: any[] = [];
   pp: any[] = [];
   // AddProductForm: FormGroup;
   // EditProductForm: FormGroup;
@@ -25,7 +49,9 @@ export class ProductComponent implements OnInit {
   prod: any[] = [];
   Addp: FormGroup;
   Editp: FormGroup;
+
   ADDimg: FormGroup;
+  images: any[] = [];
 
   product_id: any;
 
@@ -50,7 +76,7 @@ export class ProductComponent implements OnInit {
     this.ADDimg = new FormGroup({
       product_id: new FormControl('', [Validators.required]),
       mainimage: new FormControl('', [Validators.required])
-    })
+    });
 
     this.Editp = new FormGroup({
       id: new FormControl(),
@@ -165,19 +191,21 @@ export class ProductComponent implements OnInit {
   //   }, err => console.log(err));
   // }
 
-  addimg1() {
+ addimg1() {
     if (this.ADDimg.valid) {
       this._rest.Addimages(this.ADDimg.value).subscribe((data: any) => {
         console.log(data);
-        this.images.push();
+        // Assuming data contains the uploaded image information
+        this.images.push(data);
       }, (err: any) => {
         console.log(err);
-      })
+      });
     }
   }
+
   onFileChange(event: any) {
-    for (var i = 0; i < event.target.files.length; i++) {
-      this.Products.push(event.target.files[i]);
+    for (let i = 0; i < event.target.files.length; i++) {
+      this.images.push(event.target.files[i]);
     }
   }
 

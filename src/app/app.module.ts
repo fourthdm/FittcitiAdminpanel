@@ -27,6 +27,12 @@ import { LightgalleryModule } from 'lightgallery/angular';
 // import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CouponsComponent } from './pages/coupons/coupons.component';
+import { UploadimageComponent } from './pages/uploadimage/uploadimage.component';
+import { LoginComponent } from './common/login/login.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminComponent } from './pages/admin/admin.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +50,10 @@ import { CouponsComponent } from './pages/coupons/coupons.component';
     EnquiryComponent,
     ViewproductComponent,
     CartsComponent,
-    CouponsComponent
+    CouponsComponent,
+    UploadimageComponent,
+    LoginComponent,
+    AdminComponent
 
   ],
   imports: [
@@ -57,7 +66,7 @@ import { CouponsComponent } from './pages/coupons/coupons.component';
     ToastrModule.forRoot(),
     LightgalleryModule,
     CarouselModule,
-    
+    BrowserAnimationsModule
   ],
 
   providers: [],

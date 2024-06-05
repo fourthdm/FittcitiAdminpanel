@@ -12,26 +12,30 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ViewproductComponent } from './pages/viewproduct/viewproduct.component';
 import { CartsComponent } from './pages/carts/carts.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
+import { LoginComponent } from './common/login/login.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'product', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'Dashboard', component: DashboardComponent },
   { path: 'Home', component: HomeComponent },
   { path: 'product', component: ProductComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'brand', component: BrandComponent },
   { path: 'order', component: OrdersComponent },
   { path: 'user', component: UsersComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'enquiry', component: EnquiryComponent },
-  { path: 'coupons', component: CouponsComponent},
+  { path: 'coupons', component: CouponsComponent },
   { path: 'cart', component: CartsComponent },
   { path: 'viewproduct/:id', component: ViewproductComponent },
-  { path: '**', redirectTo: 'Dashboard' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

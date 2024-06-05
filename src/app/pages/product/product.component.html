@@ -1,6 +1,7 @@
 <div class="content-wrapper">
     <div class="container">
         <br>
+        <app-uploadimage></app-uploadimage>
 
         <!-- Modal For edit Products -->
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -15,9 +16,9 @@
 
                             <div class="col-md-12"> <label for="Product_Name">Product is in Stock :</label>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input"  type="checkbox" role="switch"
-                                        value="status" id="status" formControlName="status" checked>
-                                    <label class="form-check-label" for="flexSwitchCheckChecked" >Checked Product is
+                                    <input class="form-check-input" type="checkbox" role="switch" value="status"
+                                        id="status" formControlName="status" checked>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">Checked Product is
                                         Available or Not</label>
                                 </div>
                             </div>
@@ -95,11 +96,11 @@
             </button>
         </div>
         <br>
-        <!-- <div class="text-end">
+        <div class="text-end">
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addimages">
                 Add Images <i class="fa-regular fa-plus"></i>
             </button>
-        </div> -->
+        </div>
 
         <div class="modal fade" id="addimages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -115,23 +116,26 @@
                             <form [formGroup]="ADDimg" (ngSubmit)="addimg1()">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
-                                        <div class="input-label"> <label>Product id</label> </div>
+                                        <div class="input-label">
+                                            <label>Product id</label>
+                                        </div>
                                         <input type="text" class="form-control" placeholder=""
                                             formControlName="product_id">
                                     </div>
 
                                     <div class="form-group col-lg-6">
-                                        <div class="input-label"> <label>img</label></div>
+                                        <div class="input-label">
+                                            <label>Image</label>
+                                        </div>
                                         <input type="file" class="form-control" placeholder=""
-                                            formControlName="mainimage" multiple class="form-control"
-                                            (change)="onFileChange($event)">
+                                            formControlName="mainimage" multiple (change)="onFileChange($event)">
                                     </div>
+
                                     <div class="form-group col-12">
                                         <button class="btn btn-primary" type="submit">Submit</button>
                                     </div>
                                 </div>
                             </form>
-
 
                             <!-- <input (change)="onImagePicked($event)" placeholder="Upload Image" type="file" />
                             <button (click)="onImageUpload()">Upload Image</button>
@@ -424,6 +428,12 @@
                     <pagination-controls (pageChange)="pro = $event"></pagination-controls>
                 </div>
             </div>
+
+            <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                <input type="file" name="mainimage" multiple (change)="onFileSelected($event)" />
+                <input type="number" name="product_id" />
+                <button type="submit">Upload</button>
+            </form>
         </div>
     </div> <br><br>
 </div>
