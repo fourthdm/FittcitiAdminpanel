@@ -20,7 +20,7 @@ export class RestService {
   Alladmins() {
     this._state.Checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
-    return this._http.get(this.url3 + '/AlladminUsers', { headers });
+    return this._http.get(this.url3 + '/Alladmins', { headers });
   }
 
   AddNewAdmin(data: any) {
@@ -103,15 +103,21 @@ export class RestService {
   }
 
   AddBrand(data: any) {
-    return this._http.post(this.url3 + '/addbrand', data);
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.post(this.url3 + '/ADDBrand', data, { headers });
   }
 
   Editbrand(data: any) {
-    return this._http.put(this.url3 + '/updatebrand/' + data.Brand_id, data);
+    this._state.Checktoken();
+    const headers = new HttpHeaders({'x-access-token':this._state.token});
+    return this._http.put(this.url3 + '/UpdateBrandToken/' + data.Brand_id, data,{headers});
   }
 
   Deletebrand(Brand_id: any) {
-    return this._http.delete(this.url3 + '/deletebrand/' + Brand_id);
+    this._state.Checktoken();
+    const headers = new HttpHeaders({'x-access-token':this._state.token});
+    return this._http.delete(this.url3 + '/DeleteBrandtoken/' + Brand_id,{headers});
   }
 
   product() {
@@ -189,7 +195,5 @@ export class RestService {
   deletecoupon(id: number) {
     return this._http.delete(this.url3 + '/DeleteCoupon/' + id);
   }
-
-
 
 }

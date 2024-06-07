@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { RestService } from 'src/app/rest.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class AdminComponent {
   Addadmin: FormGroup;
   editadmin: FormGroup;
 
-  constructor(private _rest: RestService) {
+  constructor(private _rest: RestService,private _toastr:ToastrService) {
     this.Addadmin = new FormGroup({
       Name: new FormControl('', [Validators.required]),
       Username: new FormControl('', [Validators.required]),
@@ -61,7 +62,6 @@ export class AdminComponent {
     })
   }
 
-
   editAdmin(i: number) {
     this.selectedadmin = 1;
     this.editadmin.patchValue(this.Alladmin[i - 1]);
@@ -70,6 +70,7 @@ export class AdminComponent {
   Updateadmin() {
     this._rest.UpdateAdmin(this.editadmin.value).subscribe((data: any) => {
       console.log(data);
+      
       this.selectedadmin = null;
       this.editadmin.reset();
       this.ngOnInit();
@@ -85,10 +86,8 @@ export class AdminComponent {
         this.getalladmin();
       }, err => {
         console.log(err);
-
         this.getalladmin();
       });
     }
   }
-
 }

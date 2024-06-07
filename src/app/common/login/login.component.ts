@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     })
   }
 
-
   ngOnInit(): void {
 
   }
@@ -45,5 +44,4 @@ export class LoginComponent implements OnInit {
       this.toastr.error(err.error.message, 'Error');
     })
   }
-
 }
