@@ -37,7 +37,7 @@
                  with font-awesome or any other icon font library -->
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link" [routerLink]="['/admin']">
+          <a href="#" class="nav-link" [routerLink]="['/Home/admin']">
             <i class="fa-solid fa-hospital-user fa-xl"></i>
             <p>
               Admin's
@@ -46,7 +46,7 @@
         </li>
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link " [routerLink]="['/product']">
+          <a href="#" class="nav-link " [routerLink]="['/Home/product']">
             <!-- <i class="nav-icon far fa-circle nav-icon"></i> -->
             <i class="fa-brands fa-product-hunt fa-xl"></i>
             <p>
@@ -76,7 +76,7 @@
         </li>
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link " [routerLink]="['/category']">
+          <a href="#" class="nav-link " [routerLink]="['/Home/category']">
             <!-- <i class="nav-icon far fa-circle nav-icon"></i> -->
             <i class="fa-solid fa-layer-group fa-xl"></i>
             <p>
@@ -107,7 +107,7 @@
         </li>
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link" [routerLink]="['/brand']">
+          <a href="#" class="nav-link" [routerLink]="['/Home/brand']">
             <!-- <i class="nav-icon far fa-circle nav-icon"></i> -->
             <i class="fa-brands fa-bandcamp fa-xl"></i>
             <p>
@@ -117,7 +117,7 @@
         </li>
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link" [routerLink]="['/order']">
+          <a href="#" class="nav-link" [routerLink]="['/Home/order']">
             <!-- <i class="nav-icon far fa-circle nav-icon"></i> -->
             <i class="fa-solid fa-cart-plus fa-xl"></i>
             <p> order's </p>
@@ -125,7 +125,7 @@
         </li>
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link" [routerLink]="['/user']">
+          <a href="#" class="nav-link" [routerLink]="['/Home/user']">
             <i class="fa-solid fa-users fa-xl"></i>
             <p>
               User's
@@ -134,7 +134,7 @@
         </li>
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link" [routerLink]="['/wishlist']">
+          <a href="#" class="nav-link" [routerLink]="['/Home/wishlist']">
             <i class="fa-solid fa-list-check fa-xl"></i>
             <p>
               Wishlist
@@ -143,7 +143,7 @@
         </li>
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link" [routerLink]="['/coupons']">
+          <a href="#" class="nav-link" [routerLink]="['/Home/coupons']">
             <i class="fa-solid fa-ticket fa-xl"></i>
             <p>
               Coupons
@@ -152,10 +152,19 @@
         </li>
 
         <li class="nav-item menu-open">
-          <a href="#" class="nav-link" [routerLink]="['/enquiry']">
+          <a href="#" class="nav-link" [routerLink]="['/Home/enquiry']">
             <i class="fa-solid fa-clipboard-list fa-xl"></i>
             <p>
               Enquiry's
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link" (click)="logout()">
+            <i class="fa-solid fa-power-off fa-xl"></i>
+            <p>
+              Logout
             </p>
           </a>
         </li>

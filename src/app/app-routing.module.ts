@@ -18,19 +18,24 @@ import { AdminComponent } from './pages/admin/admin.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'Dashboard', component: DashboardComponent },
-  { path: 'Home', component: HomeComponent },
-  { path: 'product', component: ProductComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'category', component: CategoryComponent },
-  { path: 'brand', component: BrandComponent },
-  { path: 'order', component: OrdersComponent },
-  { path: 'user', component: UsersComponent },
-  { path: 'wishlist', component: WishlistComponent },
-  { path: 'enquiry', component: EnquiryComponent },
-  { path: 'coupons', component: CouponsComponent },
-  { path: 'cart', component: CartsComponent },
-  { path: 'viewproduct/:id', component: ViewproductComponent },
+  {
+    path: 'Home', component: HomeComponent, children: [
+      { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
+      { path: 'Dashboard', component: DashboardComponent },
+      { path: 'product', component: ProductComponent },
+      { path: 'admin', component: AdminComponent },
+      { path: 'category', component: CategoryComponent },
+      { path: 'brand', component: BrandComponent },
+      { path: 'order', component: OrdersComponent },
+      { path: 'user', component: UsersComponent },
+      { path: 'wishlist', component: WishlistComponent },
+      { path: 'enquiry', component: EnquiryComponent },
+      { path: 'coupons', component: CouponsComponent },
+      { path: 'cart', component: CartsComponent },
+      { path: 'viewproduct/:id', component: ViewproductComponent },
+      { path: '**', redirectTo: 'Dashboard' }
+    ]
+  },
   { path: '**', redirectTo: 'login' }
 ];
 

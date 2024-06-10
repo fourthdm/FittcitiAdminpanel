@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RestService } from 'src/app/rest.service';
 import { StateService } from 'src/app/state.service';
 
@@ -9,14 +10,19 @@ import { StateService } from 'src/app/state.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private _rest: RestService, private _state: StateService) { }
+  constructor(private _rest: RestService, private _state: StateService, private _router: Router) { }
 
   ngOnInit(): void {
 
   }
 
   view() {
-    
+
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this._router.navigate(['/login']);
   }
 
 }
