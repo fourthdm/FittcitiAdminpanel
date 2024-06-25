@@ -11,8 +11,9 @@ export class RestService {
   constructor(private _http: HttpClient, private _state: StateService) { }
 
   url3 = "http://localhost:5000";
-  // url3="https://adminpanel.fourthdm.com/node";
+  // url3="http://adminpanel.fourthdm.com/node";
 
+  //Apis for Admin
   Login(data: any) {
     return this._http.post(this.url3 + '/Adminlogin', data);
   }
@@ -34,63 +35,34 @@ export class RestService {
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
     return this._http.put(this.url3 + '/UpdateAdmin/' + data.id, data, { headers });
   }
+  //Apis admin ends
 
+  //Apis for Category
   ADDCategoryToken(data: any) {
     this._state.Checktoken();
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
     return this._http.post(this.url3 + '/AddCategorybyAdmin', data, { headers });
   }
 
-  GetAllCatgorybytoken() {
-    this._state.Checktoken();
-    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
-    return this._http.get(this.url3 + '/AllCatgeorybyAdmin', { headers });
-  }
-
-  Addimages(data: any) {
-    return this._http.post(this.url3 + '/upload', data);
-  }
-
-  uploadImages(formData: FormData): Observable<any> {
-    return this._http.post(`${this.url3}/upload`, formData);
-  }
-
-  Addsingleimg(imageForm: FormData) {
-    console.log('image uploading');
-    return this._http.post(this.url3 + '/upload/single', imageForm);
-  }
-
-  images() {
-    return this._http.get(this.url3 + '/Showimages');
-  }
-
-  getsingleimage() {
-    return this._http.get(this.url3 + '/singleimage');
-  }
-
-  getenquiry() {
-    return this._http.get(this.url3 + '/Allcontact');
-  }
-
-  deleteinquiry(Id: any) {
-    return this._http.delete(this.url3 + '/Deleteenquiry/' + Id);
-  }
-
   Category() {
     return this._http.get(this.url3 + '/Allcategory');
   }
 
-  Addcategory(data: any) {
-    return this._http.post(this.url3 + '/addcategory', data);
-  }
-
   EditCategory(data: any) {
-    return this._http.put(this.url3 + '/updatecategory/' + data.Category_id, data);
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.put(this.url3 + '/UpdateCategorytoken/' + data.Category_id, data, { headers });
   }
 
   Deletecategory(Category_id: any) {
-    return this._http.delete(this.url3 + '/deletecategory/' + Category_id);
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.delete(this.url3 + '/DeleteCategoryToken/' + Category_id, { headers });
   }
+
+  //ENd Category API's..
+
+  // API's for Brand
 
   Brand() {
     return this._http.get(this.url3 + '/Allbrand');
@@ -110,34 +82,55 @@ export class RestService {
 
   Editbrand(data: any) {
     this._state.Checktoken();
-    const headers = new HttpHeaders({'x-access-token':this._state.token});
-    return this._http.put(this.url3 + '/UpdateBrandToken/' + data.Brand_id, data,{headers});
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.put(this.url3 + '/UpdateBrandToken/' + data.Brand_id, data, { headers });
   }
 
   Deletebrand(Brand_id: any) {
     this._state.Checktoken();
-    const headers = new HttpHeaders({'x-access-token':this._state.token});
-    return this._http.delete(this.url3 + '/DeleteBrandtoken/' + Brand_id,{headers});
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.delete(this.url3 + '/DeleteBrandtoken/' + Brand_id, { headers });
   }
+  //End Brands APi's  
 
+  // API's for Product
   product() {
     return this._http.get(this.url3 + '/Product');
   }
 
-  Productss() {
-    return this._http.get(this.url3 + '/prod');
+  Productbyid(id: any) {
+    return this._http.get(this.url3 + '/product/' + id);
   }
 
-  AddProduct(data: any) {
-    return this._http.post(this.url3 + '/Addproduct', data);
+  Allproducts() {
+    return this._http.get(this.url3 + '/Allproducts');//ALL products with images
   }
 
-  Editproducts(data: any) {
-    return this._http.put(this.url3 + '/Updateproduct/' + data.id, data);
+  AddProducts(formData: FormData) {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.post(this.url3 + '/upload_Imagesss/Product', formData, { headers });
   }
 
-  Deleteproduct(id: number) {
-    return this._http.delete(this.url3 + '/Deleteproduct/' + id);
+  EditProducts(id: number, formData: FormData) {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.put(this.url3 + '/UpdateProducts/' + id, formData, { headers });
+  }
+
+  DeleteProduct(id: number) {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.delete(this.url3 + '/DeleteProduct/' + id, { headers });
+  }
+  //End Product API's
+
+  getenquiry() {
+    return this._http.get(this.url3 + '/Allcontact');
+  }
+
+  deleteinquiry(Id: any) {
+    return this._http.delete(this.url3 + '/Deleteenquiry/' + Id);
   }
 
   getCart() {
@@ -152,36 +145,28 @@ export class RestService {
     return this._http.get(this.url3 + '/ALLuser');
   }
 
+  deleteUser(User_id: any) {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.delete(this.url3 + '/DeleteUser/' + User_id, { headers });
+  }
+
   getorders() {
     return this._http.get(this.url3 + '/AllordersforAdmin');
-  }
-
-  showimages(product_id: string) {
-    return this._http.get(this.url3 + '/Showimages/' + product_id);
-  }
-
-  productwithmain(id: string) {
-    return this._http.get(this.url3 + '/Productwithimages/' + id);
-  }
-
-  onlyproduct(id: string) {
-    return this._http.get(this.url3 + '/onlyproduct/' + id);
-  }
-
-  mainimage(id: string) {
-    return this._http.get(this.url3 + '/Productwithmainimage/' + id);
   }
 
   wishlistbyuser_id(data: any) {
     return this._http.post(this.url3 + '/Wishlistbyuserid', data);
   }
-
+  //API's for Coupans
   generatecoupons(data: any) {
-    return this._http.post(this.url3 + '/generate-coupon', data);
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.post(this.url3 + '/ADDCoupontoken', data, { headers });
   }
 
   AllCoupons() {
-    return this._http.get(this.url3 + '/Getallcoupons');
+    return this._http.get(this.url3 + '/Allcoupans');
   }
 
   getcouponbybrand_id(Brand_id: number) {
@@ -189,11 +174,17 @@ export class RestService {
   }
 
   UpdateCoupons(data: any) {
-    return this._http.put(this.url3 + '/UpdateCoupon/' + data.id, data);
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.put(this.url3 + '/Updatecoupontoken/' + data.id, data, { headers });
   }
 
   deletecoupon(id: number) {
-    return this._http.delete(this.url3 + '/DeleteCoupon/' + id);
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.delete(this.url3 + '/DeleteCouponsToken/' + id, { headers });
   }
+
+  //End a Coupans API
 
 }

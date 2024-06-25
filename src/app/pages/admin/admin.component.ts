@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { jwtDecode } from 'jwt-decode';
 import { ToastrService } from 'ngx-toastr';
 import { RestService } from 'src/app/rest.service';
 
@@ -10,13 +11,15 @@ import { RestService } from 'src/app/rest.service';
 })
 export class AdminComponent {
 
+  isAdmin: boolean = false;
+
   pro: number = 1;
   selectedadmin: any = null;
   Alladmin: any[] = [];
   Addadmin: FormGroup;
   editadmin: FormGroup;
 
-  constructor(private _rest: RestService,private _toastr:ToastrService) {
+  constructor(private _rest: RestService, private _toastr: ToastrService) {
     this.Addadmin = new FormGroup({
       Name: new FormControl('', [Validators.required]),
       Username: new FormControl('', [Validators.required]),
@@ -40,7 +43,19 @@ export class AdminComponent {
   }
 
   ngOnInit(): void {
-    this.getalladmin()
+    this.getalladmin();
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      if (decoded.role === 'Admin') {
+        this.isAdmin = true;
+      } else {
+        this._toastr.warning('Only admin can add new users.', 'Unauthorized');
+      }
+    } else {
+      this._toastr.error('No token found.', 'Unauthorized');
+    }
   }
 
   getalladmin() {
@@ -55,9 +70,11 @@ export class AdminComponent {
   adminadd() {
     this._rest.AddNewAdmin(this.Addadmin.value).subscribe((data: any) => {
       console.log(data);
-      this.Addadmin.reset();
       this.Alladmin.push();
+      this._toastr.success('New Admin Added', 'success');
+      this.Addadmin.reset();
     }, (err: any) => {
+      this._toastr.error('Only Admin Can', 'error');
       console.log(err);
     })
   }
@@ -70,19 +87,20 @@ export class AdminComponent {
   Updateadmin() {
     this._rest.UpdateAdmin(this.editadmin.value).subscribe((data: any) => {
       console.log(data);
-      
       this.selectedadmin = null;
+      this._toastr.success('New Admin Added', 'success');
       this.editadmin.reset();
       this.ngOnInit();
     }, (err) => {
+      this._toastr.error('Only Admin Can', 'error');
       console.log(err);
     })
   }
 
   delete(id: number) {
     if (confirm('Are You Sure To Delete AdminUser?')) {
-      this._rest.Deletecategory(id).subscribe(resp => {
-        console.log(resp);
+      this._rest.Deletecategory(id).subscribe(data => {
+        console.log(data);
         this.getalladmin();
       }, err => {
         console.log(err);

@@ -32,7 +32,7 @@ export class CategoryComponent implements OnInit {
   }
 
   AllCategory() {
-    this._rest.GetAllCatgorybytoken().subscribe((result: any) => {
+    this._rest.Category().subscribe((result: any) => {
       console.log(result);
       this.allcategory = result.data;
     }, (err) => {
@@ -41,10 +41,10 @@ export class CategoryComponent implements OnInit {
   }
 
   AddCategories() {
-    this._rest.Addcategory(this.AddCategory.value).subscribe((result) => {
+    this._rest.ADDCategoryToken(this.AddCategory.value).subscribe((result:any) => {
       console.log(result);
+      this.allcategory.push(result.data);
       this.AddCategory.reset();
-      this.allcategory.push()
     }, (err) => {
       console.log(err);
     })

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProductComponent } from './pages/product/product.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { BrandComponent } from './pages/brand/brand.component';
 import { OrdersComponent } from './pages/orders/orders.component';
@@ -14,6 +13,7 @@ import { CartsComponent } from './pages/carts/carts.component';
 import { CouponsComponent } from './pages/coupons/coupons.component';
 import { LoginComponent } from './common/login/login.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { ProductsssComponent } from './pages/productsss/productsss.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,7 +22,7 @@ const routes: Routes = [
     path: 'Home', component: HomeComponent, children: [
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
       { path: 'Dashboard', component: DashboardComponent },
-      { path: 'product', component: ProductComponent },
+      { path: 'product', component: ProductsssComponent },
       { path: 'admin', component: AdminComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'brand', component: BrandComponent },

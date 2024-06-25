@@ -5,11 +5,7 @@
             <h1>User's Information</h1>
         </div>
         <br>
-        <div class="text-end">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                ADD New User <i class="fa-regular fa-plus"></i>
-            </button>
-        </div>
+   
         <br>
 
         <div class="table-responsive">
@@ -24,7 +20,6 @@
                         <th scope="col"> <b>Address </b> </th>
                         <th scope="col"> <b>Mobile No</b> </th>
                         <th scope="col"> <b>Delete User</b> </th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +35,7 @@
                                 data-bs-target="#exampleModal2">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button></td> -->
-                        <td><button class="btn btn-danger" type="button" (click)="delete(u['id'])"
+                        <td><button class="btn btn-danger" type="button" (click)="delete(u['User_id'])"
                                 class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button></td>
                     </tr>
                     <div class="text-center">

@@ -1,6 +1,6 @@
 <div class="main"><br>
     <br><br>
-    <section class="h-100 gradient-form">
+    <section class="h-80 gradient-form">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
@@ -10,19 +10,20 @@
                             <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body p-md-5 mx-md-4">
-
-                                        <div class="text-center">
-                                            <h3>Login</h3> <br>
-                                            <h4>
+                                        <div class="text-center"> <br>
+                                            <i class="fa-solid fa-cart-plus fa-2xl"></i><br>
+                                            <h4> <br>
                                                 <p>Please Login to Your Account</p>
                                             </h4>
                                         </div>
                                         <form [formGroup]="Loginform" (submit)="loginn()">
                                             <div class="col-md-12">
                                                 <label for="Username"> Username :</label>
-                                                <input type="text" class="form-control" id="Username"
-                                                    autocomplete="username" formControlName="Username" value=""
-                                                    placeholder="Enter Username" required>
+                                                <input type="text"
+                                                    [ngClass]="{'warning-box' :Loginform.controls['Username'].touched && Loginform.controls['Username'].invalid}"
+                                                    class="form-control" id="Username" autocomplete="username"
+                                                    formControlName="Username" value="" placeholder="Enter Username"
+                                                    required>
                                                 <div class="valid-feedback">
                                                     Your Name
                                                 </div>
@@ -37,9 +38,9 @@
                                                         required>
                                                     <button class="btn btn-light" type="button" [ngClass]="{
                                                         'fa-eye-slash': !liked,
-                                                        'fa-eye': liked
-                                                      }" (click)="Show()" id="button-addon2"><i
-                                                            class="fa-solid fa-eye-slash"></i></button>
+                                                        'fa-eye': liked }" (click)="Show()" id="button-addon2"><i
+                                                            class="fa-solid fa-eye-slash"></i>
+                                                    </button>
                                                 </div>
                                                 <!-- 
                                                 <input [type]="liked ? 'text' : 'password'" type="Password"

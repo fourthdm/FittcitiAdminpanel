@@ -52,7 +52,8 @@ export class CouponsComponent implements OnInit {
     this._rest.generatecoupons(coupondata).subscribe((data: any) => {
       console.log(data);
       this.couponsform.reset();
-      this.coupons.push();
+      this.coupons.push(data.data);
+      this.getcoupons();
     }, (err: any) => {
       console.log(err);
     })

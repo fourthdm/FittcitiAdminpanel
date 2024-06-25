@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { RestService } from 'src/app/rest.service';
 import { StateService } from 'src/app/state.service';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,13 +20,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private rest: RestService, private state: StateService, private _router: Router, private toastr: ToastrService) {
     this.Loginform = new FormGroup({
-      Username: new FormControl('', [Validators.required]),
-      Password: new FormControl('', [Validators.required])
+      Username: new FormControl('', [Validators.required,Validators.minLength(3)]),
+      Password: new FormControl('', [Validators.required,Validators.maxLength(8)])
     })
   }
 
   ngOnInit(): void {
-
+    
   }
 
   Show() {
@@ -33,15 +35,16 @@ export class LoginComponent implements OnInit {
 
   loginn() {
     this.rest.Login(this.Loginform.value).subscribe((data: any) => {
-      console.log(data);             
-      this.toastr.success(data.message,'success');
+      console.log(data);
+      this.toastr.success(data.message, 'success');
       localStorage.setItem('token', data.data);
       this.state.token = (data.data);
       this.state.decodetoken();
       this._router.navigate(['/Home']);
     }, (err: any) => {
       console.log(err);
-      this.toastr.error(err.error.message, 'Error');
+      this.toastr.error(err.message, 'Error');
     })
   }
+
 }

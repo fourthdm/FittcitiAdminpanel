@@ -31,7 +31,6 @@ export class UsersComponent implements OnInit {
       Address: new FormControl('', [Validators.required]),
       Email: new FormControl('', [Validators.required]),
       Mobileno: new FormControl('', [Validators.required]),
-
     })
 
   }
@@ -53,6 +52,14 @@ export class UsersComponent implements OnInit {
 
   updateuser() { }
 
-  delete(id: number) { }
-
+  delete(User_id: number) {
+    if (confirm('Are You Sure To Delete It ?')) {
+      this._rest.deleteUser(User_id).subscribe((resp: any) => {
+        console.log(resp);
+        this.getusers();
+      }, err => {
+        console.log(err);
+      });
+    }
+  }
 }

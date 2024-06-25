@@ -8,7 +8,6 @@ import { FooterComponent } from './common/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { BrandComponent } from './pages/brand/brand.component';
-import { ProductComponent } from './pages/product/product.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -18,7 +17,8 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, provideToastr } from 'ngx-toastr';
+
 import { EnquiryComponent } from './pages/enquiry/enquiry.component';
 import { ViewproductComponent } from './pages/viewproduct/viewproduct.component';
 import { CartsComponent } from './pages/carts/carts.component';
@@ -27,11 +27,11 @@ import { LightgalleryModule } from 'lightgallery/angular';
 // import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CouponsComponent } from './pages/coupons/coupons.component';
-import { UploadimageComponent } from './pages/uploadimage/uploadimage.component';
 import { LoginComponent } from './common/login/login.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminComponent } from './pages/admin/admin.component';
+import { ProductsssComponent } from './pages/productsss/productsss.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,6 @@ import { AdminComponent } from './pages/admin/admin.component';
     HomeComponent,
     CategoryComponent,
     BrandComponent,
-    ProductComponent,
     DashboardComponent,
     OrdersComponent,
     UsersComponent,
@@ -51,9 +50,9 @@ import { AdminComponent } from './pages/admin/admin.component';
     ViewproductComponent,
     CartsComponent,
     CouponsComponent,
-    UploadimageComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    ProductsssComponent
 
   ],
   imports: [
@@ -70,6 +69,6 @@ import { AdminComponent } from './pages/admin/admin.component';
   ],
 
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }
