@@ -126,7 +126,8 @@ export class ProductsssComponent implements OnInit {
     this._rest.EditProducts(this.EditProductform.value.id, formData).subscribe(
       response => {
         console.log('Update success', response);
-        this.getProducts();
+        this.EditProductform.reset();
+        this.ngOnInit();
       },
       error => {
         console.error('Update error', error);

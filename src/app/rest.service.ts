@@ -12,6 +12,7 @@ export class RestService {
 
   url3 = "http://localhost:5000";
   // url3="http://adminpanel.fourthdm.com/node";
+  // url3 = "https://adminpanel.fittciti.in/api"
 
   //Apis for Admin
   Login(data: any) {

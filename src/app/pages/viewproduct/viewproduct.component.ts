@@ -34,4 +34,16 @@ export class ViewproductComponent implements OnInit {
       console.log(err)
     })
   }
+
+  getstyle(product: any): any {
+    if (product.status == '1') {
+      return {
+        'color': 'green'
+      }
+    } else {
+      return {
+        'color': 'red'
+      }
+    }
+  }
 }

@@ -26,7 +26,8 @@
                         {{ p.status == '1' ? '' : 'Out of Stock' }}
                     </p>
                     <img [src]="p.image" alt="" [routerLink]="['/Home/viewproduct',p.id]"> <br> <br>
-                    <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br>
+                    <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br> <br>
+
                     <h6><b>Weight</b>: {{p.Weight}}</h6>
                     <h6><b>Actual Price: </b> <b>&#8377; {{p.Price}}</b></h6>
                     <p><b>Discount:</b> {{p.discount}}%</p>

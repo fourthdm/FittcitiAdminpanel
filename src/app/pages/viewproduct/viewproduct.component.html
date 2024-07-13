@@ -116,6 +116,8 @@
             <br>
             <br> <br><br>
         </div>
+        <h5><b>Availability :</b></h5>
+        <h5 [ngStyle]="getstyle(p)">{{p.status == '1'? 'In Stock' : 'Out of Stock'}}</h5>
         <h5> <b>Description :</b></h5>
         <p>{{p.description}} </p> <br>
         <h5><b>Ingredients :</b></h5>
@@ -124,8 +126,5 @@
         <h5><b>Benefits:</b></h5>
         <p>{{p.benefits}}</p>
         <br>
-        <h5>Availability :</h5>
-        <p *ngIf="p.status == 0 ">{{p.status}}</p>
-
     </div>
 </div>

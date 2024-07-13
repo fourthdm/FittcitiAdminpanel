@@ -30,6 +30,7 @@ import { CouponsComponent } from './pages/coupons/coupons.component';
 import { LoginComponent } from './common/login/login.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AdminComponent } from './pages/admin/admin.component';
 import { ProductsssComponent } from './pages/productsss/productsss.component';
 
