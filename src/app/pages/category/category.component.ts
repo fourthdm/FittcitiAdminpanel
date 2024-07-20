@@ -44,6 +44,7 @@ export class CategoryComponent implements OnInit {
     this._rest.ADDCategoryToken(this.AddCategory.value).subscribe((result:any) => {
       console.log(result);
       this.allcategory.push(result.data);
+      this.AllCategory();
       this.AddCategory.reset();
     }, (err) => {
       console.log(err);

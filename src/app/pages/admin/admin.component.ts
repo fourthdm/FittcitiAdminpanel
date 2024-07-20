@@ -99,7 +99,7 @@ export class AdminComponent {
 
   delete(id: number) {
     if (confirm('Are You Sure To Delete AdminUser?')) {
-      this._rest.Deletecategory(id).subscribe(data => {
+      this._rest.DeleteAdmin(id).subscribe(data => {
         console.log(data);
         this.getalladmin();
       }, err => {

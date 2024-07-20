@@ -10,9 +10,11 @@ export class RestService {
 
   constructor(private _http: HttpClient, private _state: StateService) { }
 
-  url3 = "http://localhost:5000";
+  // url3 = "http://localhost:5000";
   // url3="http://adminpanel.fourthdm.com/node";
-  // url3 = "https://adminpanel.fittciti.in/api"
+
+  // url3 = "https://adminpanel.fittciti.in/api";
+  url3 = "https://adminpanel.fittciti.in/node";
 
   //Apis for Admin
   Login(data: any) {
@@ -36,6 +38,13 @@ export class RestService {
     const headers = new HttpHeaders({ 'x-access-token': this._state.token });
     return this._http.put(this.url3 + '/UpdateAdmin/' + data.id, data, { headers });
   }
+
+  DeleteAdmin(id: any) {
+    this._state.Checktoken();
+    const headers = new HttpHeaders({ 'x-access-token': this._state.token });
+    return this._http.delete(this.url3 + '/DeleteAdmin/' + id, { headers });
+  }
+
   //Apis admin ends
 
   //Apis for Category

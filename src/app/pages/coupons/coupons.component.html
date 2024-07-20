@@ -117,7 +117,7 @@
                     <tr *ngFor="let c of coupons | paginate: { itemsPerPage: 12, currentPage: pro }, let i =index">
                         <td>{{i+1}}</td>
                         <td>{{c.code}}</td>
-                        <td>{{c.discount}}%</td>
+                        <td>{{c.discount}}</td>
                         <td>{{c.Brand_id}}</td>
 
                         <td> <button type="button" class="btn btn-info" (click)="editcoupon(c.id)" data-bs-toggle="modal"

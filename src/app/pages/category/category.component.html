@@ -38,18 +38,18 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">ADD New Brand</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">ADD New Category</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form [formGroup]="AddCategory" (submit)="AddCategories()">
                         <div class="col-md-10">
-                            <label for="Category_Name">Brand Name:</label>
+                            <label for="Category_Name">Category Name:</label>
                             <input type="text" name="Category_Name" class="form-control" id="Category_Name"
-                                formControlName="Category_Name" value="" placeholder="Enter Brand Name " required>
+                                formControlName="Category_Name" value="" placeholder="Enter Category Name " required>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-success">ADD Brands</button>
+                        <button type="submit" class="btn btn-success">ADD Category</button>
                     </form>
                 </div>
 

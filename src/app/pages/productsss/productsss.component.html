@@ -30,8 +30,10 @@
 
                     <h6><b>Weight</b>: {{p.Weight}}</h6>
                     <h6><b>Actual Price: </b> <b>&#8377; {{p.Price}}</b></h6>
-                    <p><b>Discount:</b> {{p.discount}}%</p>
+                    <p><b>Discount Amount:</b>&#8377; {{p.discountAmount}}</p>
                     <p><b>Discount Price:</b> &#8377; {{p.pricewithdiscount}}</p>
+                    <p><b>Category Name:</b> {{p.Category_Name}}</p>
+                    <p><b>Brand Name:</b> {{p.Brand_Name}}</p>
                 </div>
             </div>
         </div>
@@ -105,9 +107,9 @@
 
 
                         <div class="col-md-12">
-                            <label for="discount">Discount:</label>
-                            <input type="number" name="discount" class="form-control" id="discount"
-                                formControlName="discount" placeholder="Enter Discount." required>
+                            <label for="discountAmount">Discount:</label>
+                            <input type="number" name="discountAmount" class="form-control" id="discountAmount"
+                                formControlName="discountAmount" placeholder="Enter discountAmount." required>
                         </div>
 
                         <div class="col-md-12">
@@ -126,6 +128,17 @@
                             <label for="Brand_id">Brand ID :</label>
                             <input type="number" name="Brand_id" class="form-control" id="Brand_id"
                                 formControlName="Brand_id" value="" placeholder="Enter Brand id" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="Category_Name">Category Name :</label>
+                            <input type="text" name="Category_Name" class="form-control" id="Category_Name"
+                                formControlName="Category_Name" value="" placeholder="Enter Category Name" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="Brand_Name">Brand Name:</label>
+                            <input type="text" name="Brand_Name" class="form-control" id="Brand_Name"
+                                formControlName="Brand_Name" value="" placeholder="Enter Brand Brand_Name" required>
                         </div>
 
                         <div>
@@ -228,9 +241,9 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="discount">Discount:</label>
-                            <input type="number" name="discount" class="form-control" id="discount"
-                                formControlName="discount" placeholder="Enter Discount." required>
+                            <label for="discountAmount">DiscountAmount:</label>
+                            <input type="number" name="discountAmount" class="form-control" id="discountAmount"
+                                formControlName="discountAmount" placeholder="Enter Discount." required>
                         </div>
 
                         <div class="col-md-12">
@@ -251,6 +264,17 @@
                                 formControlName="Brand_id" value="" placeholder="Enter Brand id" required>
                         </div>
 
+                        <div class="col-md-12">
+                            <label for="Category_Name">Category Name :</label>
+                            <input type="text" name="Category_Name" class="form-control" id="Category_Name"
+                                formControlName="Category_Name" value="" placeholder="Enter Category Name" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="Brand_Name">Brand Name:</label>
+                            <input type="text" name="Brand_Name" class="form-control" id="Brand_Name"
+                                formControlName="Brand_Name" value="" placeholder="Enter Brand Brand_Name" required>
+                        </div>
                         <div>
                             <label>Image:</label> <br>
                             <input type="file" (change)="onFileChange($event, 'image')">
