@@ -71,7 +71,7 @@
 </div> -->
 <br>
 <div class="container">
-    <div class="row" *ngFor="let p of product">
+    <div class="row" *ngFor="let p of productList">
         <div class="col-md-6">
             <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-indicators">
@@ -115,11 +115,24 @@
             <p>&#8377; {{p.pricewithdiscount}}</p>
 
             <h5><b>Availability :</b></h5>
-            <h5 [ngStyle]="getstyle(p)">{{p.status == '1'? 'In Stock' : 'Out of Stock'}}</h5>
+            <h5 [ngStyle]="getStyle(p)">{{p.status == '1'? 'In Stock' : 'Out of Stock'}}</h5>
             <br>
             <br> <br><br>
         </div>
 
+        <p> <span> <b>Category Name : </b> {{p.Category_Name}}</span>
+            <span style="margin-inline-start: 2%;"><b>Brand Name : </b>{{p.Brand_Name}}</span>
+        </p>
+
+        <div class="row" *ngIf="similarProducts.length > 0">
+            <h5>Similar Product : </h5>
+            <div class="col-md-2" *ngFor="let product of similarProducts">
+                <a >
+                    <img style="width: 100%;" [src]="product.image" alt="Similar Product Image">
+                </a>
+                <p>{{ product.Product_Name }}</p>
+            </div>
+        </div> <br>
         <h5> <b>Description :</b></h5>
         <p>{{p.description}} </p> <br>
         <h5><b>Ingredients :</b></h5>

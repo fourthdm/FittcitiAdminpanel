@@ -13,8 +13,8 @@ export class RestService {
   // url3 = "http://localhost:5000";
   // url3="http://adminpanel.fourthdm.com/node";
 
-  // url3 = "https://adminpanel.fittciti.in/api";
-  url3 = "https://adminpanel.fittciti.in/node";
+  url3 = "https://adminpanel.fittciti.in/api";
+  // url3 = "https://adminpanel.fittciti.in/node";
 
   //Apis for Admin
   Login(data: any) {
@@ -114,6 +114,10 @@ export class RestService {
 
   Allproducts() {
     return this._http.get(this.url3 + '/Allproducts');//ALL products with images
+  }
+
+  viewproductsss(product_id: string) {
+    return this._http.get(this.url3 + '/api/products/similar/' + product_id);
   }
 
   AddProducts(formData: FormData) {
