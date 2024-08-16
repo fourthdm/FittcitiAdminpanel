@@ -1,22 +1,23 @@
 <div class="container">
     <br>
     <div class="text-center">
-        <h1>Products</h1>
+        <h1>Projects</h1>
     </div>
     <div class="text-end">
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            ADD New Product <i class="fa-regular fa-plus"></i>
+            ADD New Projects <i class="fa-regular fa-plus"></i>
         </button>
     </div>
     <br>
     <div class="row">
-        <div class="col-md-4" *ngFor="let p of Products | paginate :{itemsPerPage :3 ,currentPage : pro},let i=index">
+        <div class="col-md-6" *ngFor="let p of Products | paginate :{itemsPerPage :3 ,currentPage : pro},let i=index">
             <div class="card">
                 <div class="card-body">
-                    <a type="button" (click)="editproduct(p.id)" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <a type="button" (click)="editproduct(p.Project_id)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
                         <i class="fa-solid fa-pen-to-square fa-xl" style="color: green;"></i>
                     </a>
-                    <span style="float:right;"> <a type="button" (click)="DeleteProduct(p['id'])">
+                    <span style="float:right;"> <a type="button" (click)="DeleteProduct(p['Project_id'])">
                             <i class="fa-regular fa-trash-can fa-xl " style="color: red;"></i></a></span>
                     <div>
                         <br>
@@ -25,15 +26,18 @@
                     <p [ngStyle]="getStyle(p)">
                         {{ p.status == '1' ? '' : 'Out of Stock' }}
                     </p>
-                    <img [src]="p.image" alt="" [routerLink]="['/Home/viewproduct',p.id]"> <br> <br>
-                    <h4 class="card-title"><b>{{p.Product_Name}}</b></h4> <br> <br>
+                    <img [src]="p.image" alt="" [routerLink]="['/Home/viewproject',p.id]"> <br> <br>
+                    <h4 class="card-title"><b>{{p.Project_Name}}</b></h4> <br> <br>
 
-                    <h6><b>Weight</b>: {{p.Weight}}</h6>
-                    <h6><b>Actual Price: </b> <b>&#8377; {{p.Price}}</b></h6>
-                    <p><b>Discount Amount:</b>&#8377; {{p.discountAmount}}</p>
-                    <p><b>Discount Price:</b> &#8377; {{p.pricewithdiscount}}</p>
-                    <p><b>Category Name:</b> {{p.Category_Name}}</p>
-                    <p><b>Brand Name:</b> {{p.Brand_Name}}</p>
+
+                    <h6><b>Price: </b> <b>&#8377; {{p.Price}}</b></h6>
+                    <p><b>Project Name:</b> {{p.Project_Name}}</p>
+                    <p><b>Location:</b> {{p.Location}}</p>
+                    <p><b>Status:</b> {{p.status}}</p>
+                    <p><b>Possession:</b> {{p.possession}}</p>
+                    <p><b>Typology:</b> {{p.typology}}</p>
+                    <p><b>Information:</b> {{p.information}}</p>
+                    <p><b>Nearby:</b> {{p.nearby}}</p>
                 </div>
             </div>
         </div>
@@ -47,7 +51,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">ADD New Product</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">ADD New Project</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -55,7 +59,7 @@
                         novalidate>
 
                         <!-- <div class="col-md-12">
-                            <label for="Product_Name">Product is in Stock :</label>
+                            <label for="Project_Name">Product is in Stock :</label>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" value="status"
                                     id="status" formControlName="status" checked>
@@ -65,37 +69,38 @@
                             </div>
                         </div> -->
                         <div class="col-md-12">
-                            <label for="status">Product is in Stock :</label>
+                            <label for="status">Project is in Stock :</label>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" id="status" formControlName="status"
                                     (change)="toggleStatus($event)">
-                                <label class="form-check-label" for="status">Checked Product is Available or Not</label>
+                                <label class="form-check-label" for="status">Checked Project is Ready to Move In or
+                                    Under Construction</label>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <label for="Product_Name">Product Name:</label>
-                            <input type="text" name="Product_Name" class="form-control" id="Product_Name"
-                                formControlName="Product_Name" value="" placeholder="Enter Product Name " required>
+                            <label for="Project_Name">Project Name:</label>
+                            <input type="text" name="Project_Name" class="form-control" id="Project_Name"
+                                formControlName="Project_Name" value="" placeholder="Enter Project Name " required>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="description">Description :</label>
-                            <textarea type="text" name="description" class="form-control" id="description"
-                                formControlName="description" value="" placeholder="Enter description" required>
+                            <label for="information">Information :</label>
+                            <textarea type="text" name="information" class="form-control" id="information"
+                                formControlName="information" value="" placeholder="Enter information" required>
                         </textarea>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="benefits">Benefits :</label>
-                            <textarea type="text" name="benefits" class="form-control" id="benefits"
-                                formControlName="benefits" value="" placeholder="Enter benefits" required>
+                            <label for="Location">Location :</label>
+                            <textarea type="text" name="Location" class="form-control" id="Location"
+                                formControlName="Location" value="" placeholder="Enter Location" required>
                         </textarea>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="ingredients">Ingredients</label>
-                            <textarea type="text" name="ingredients" class="form-control" id="ingredients"
-                                formControlName="ingredients" value="" placeholder="Enter ingredients" required>
+                            <label for="possession">possession</label>
+                            <textarea type="text" name="possession" class="form-control" id="possession"
+                                formControlName="possession" value="" placeholder="Enter possession" required>
                         </textarea>
                         </div>
 
@@ -107,38 +112,15 @@
 
 
                         <div class="col-md-12">
-                            <label for="discountAmount">Discount:</label>
-                            <input type="number" name="discountAmount" class="form-control" id="discountAmount"
-                                formControlName="discountAmount" placeholder="Enter discountAmount." required>
+                            <label for="typology">typology:</label>
+                            <input type="text" name="typology" class="form-control" id="typology"
+                                formControlName="typology" placeholder="Enter typology." required>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="Weight">Weight:</label>
-                            <input type="text" name="Weight" class="form-control" id="Weight" formControlName="Weight"
-                                placeholder="Enter Weight of Product" required>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="Category_id">Category ID :</label>
-                            <input type="number" name="Category_id" class="form-control" id="Category_id"
-                                formControlName="Category_id" value="" placeholder="Enter Category id" required>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="Brand_id">Brand ID :</label>
-                            <input type="number" name="Brand_id" class="form-control" id="Brand_id"
-                                formControlName="Brand_id" value="" placeholder="Enter Brand id" required>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="Category_Name">Category Name :</label>
-                            <input type="text" name="Category_Name" class="form-control" id="Category_Name"
-                                formControlName="Category_Name" value="" placeholder="Enter Category Name" required>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="Brand_Name">Brand Name:</label>
-                            <input type="text" name="Brand_Name" class="form-control" id="Brand_Name"
-                                formControlName="Brand_Name" value="" placeholder="Enter Brand Brand_Name" required>
+                            <label for="nearby">nearby:</label>
+                            <input type="text" name="nearby" class="form-control" id="nearby" formControlName="nearby"
+                                placeholder="Enter nearby" required>
                         </div>
 
                         <div>
@@ -152,20 +134,17 @@
                         </div>
 
                         <div>
-                            <label>Back Image:</label> <br>
-                            <input type="file" (change)="onFileSelected($event, 'backimage')">
+                            <label> Image2:</label> <br>
+                            <input type="file" (change)="onFileSelected($event, 'image2')">
                         </div>
 
-                        <div>
-                            <label>Table Image:</label><br>
-                            <input type="file" (change)="onFileSelected($event, 'tableimage')">
-                        </div>
+
 
                         <!-- <button (click)="()">add</button> -->
                         <div class="text-center">
                             <div class="col-12">
                                 <button class="btn btn-success" style="color: white;" type="submit">
-                                    Add Products</button> <br> <br>
+                                    Add Projects</button> <br> <br>
                             </div>
                         </div>
                         <br><br>
@@ -189,7 +168,7 @@
                     <form [formGroup]="EditProductform" (ngSubmit)="updateProduct()" class="row g-3 needs-validation"
                         novalidate>
                         <!-- 
-                        <div class="col-md-12"> <label for="Product_Name">Product is in Stock :</label>
+                        <div class="col-md-12"> <label for="Project_Name">Product is in Stock :</label>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" value="" id="status"
                                     formControlName="status" checked>
@@ -208,29 +187,29 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <label for="Product_Name">Product Name:</label>
-                            <input type="text" name="Product_Name" class="form-control" id="Product_Name"
-                                formControlName="Product_Name" value="" placeholder="Enter Product Name " required>
+                            <label for="Project_Name">Project Name:</label>
+                            <input type="text" name="Project_Name" class="form-control" id="Project_Name"
+                                formControlName="Project_Name" value="" placeholder="Enter Project Name " required>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="description">Description :</label>
-                            <textarea type="text" name="description" class="form-control" id="description"
-                                formControlName="description" value="" placeholder="Enter description" required>
+                            <label for="information">Information :</label>
+                            <textarea type="text" name="information" class="form-control" id="information"
+                                formControlName="information" value="" placeholder="Enter information" required>
                         </textarea>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="benefits">Benefits :</label>
-                            <textarea type="text" name="benefits" class="form-control" id="benefits"
-                                formControlName="benefits" value="" placeholder="Enter benefits" required>
+                            <label for="Location">Location :</label>
+                            <textarea type="text" name="Location" class="form-control" id="Location"
+                                formControlName="Location" value="" placeholder="Enter Location" required>
                         </textarea>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="ingredients">Ingredients</label>
-                            <textarea type="text" name="ingredients" class="form-control" id="ingredients"
-                                formControlName="ingredients" value="" placeholder="Enter ingredients" required>
+                            <label for="possession">possession</label>
+                            <textarea type="text" name="possession" class="form-control" id="possession"
+                                formControlName="possession" value="" placeholder="Enter possession" required>
                         </textarea>
                         </div>
 
@@ -240,60 +219,35 @@
                                 placeholder="Enter Price." required>
                         </div>
 
+
                         <div class="col-md-12">
-                            <label for="discountAmount">DiscountAmount:</label>
-                            <input type="number" name="discountAmount" class="form-control" id="discountAmount"
-                                formControlName="discountAmount" placeholder="Enter Discount." required>
+                            <label for="typology">typology:</label>
+                            <input type="text" name="typology" class="form-control" id="typology"
+                                formControlName="typology" placeholder="Enter typology." required>
                         </div>
 
                         <div class="col-md-12">
-                            <label for="Weight">Weight:</label>
-                            <input type="text" name="Weight" class="form-control" id="Weight" formControlName="Weight"
-                                placeholder="Enter Weight of Product" required>
+                            <label for="nearby">nearby:</label>
+                            <input type="text" name="nearby" class="form-control" id="nearby" formControlName="nearby"
+                                placeholder="Enter nearby" required>
                         </div>
 
-                        <div class="col-md-12">
-                            <label for="Category_id">Category ID :</label>
-                            <input type="number" name="Category_id" class="form-control" id="Category_id"
-                                formControlName="Category_id" value="" placeholder="Enter Category id" required>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="Brand_id">Brand ID :</label>
-                            <input type="number" name="Brand_id" class="form-control" id="Brand_id"
-                                formControlName="Brand_id" value="" placeholder="Enter Brand id" required>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="Category_Name">Category Name :</label>
-                            <input type="text" name="Category_Name" class="form-control" id="Category_Name"
-                                formControlName="Category_Name" value="" placeholder="Enter Category Name" required>
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="Brand_Name">Brand Name:</label>
-                            <input type="text" name="Brand_Name" class="form-control" id="Brand_Name"
-                                formControlName="Brand_Name" value="" placeholder="Enter Brand Brand_Name" required>
-                        </div>
                         <div>
                             <label>Image:</label> <br>
-                            <input type="file" (change)="onFileChange($event, 'image')">
+                            <input type="file" (change)="onFileSelected($event, 'image')">
                         </div>
 
                         <div>
                             <label>Main Image:</label> <br>
-                            <input type="file" (change)="onFileChange($event, 'mainimage')">
+                            <input type="file" (change)="onFileSelected($event, 'mainimage')">
                         </div>
 
                         <div>
-                            <label>Back Image:</label> <br>
-                            <input type="file" (change)="onFileChange($event, 'backimage')">
+                            <label> Image2:</label> <br>
+                            <input type="file" (change)="onFileSelected($event, 'image2')">
                         </div>
 
-                        <div>
-                            <label>Table Image:</label><br>
-                            <input type="file" (change)="onFileChange($event, 'tableimage')">
-                        </div>
+
 
                         <!-- <button (click)="()">add</button> -->
                         <div class="text-center">

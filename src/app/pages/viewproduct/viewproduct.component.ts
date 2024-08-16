@@ -68,19 +68,11 @@ export class ViewproductComponent implements OnInit {
 
   ngOnInit(): void {
     this._activeroute.params.subscribe((params: Params) => {
-      const id = params['id'];
-      if (id) {
-        this.getProductAndSimilar(id);
+      const Project_id = params['Project_id'];
+      if (Project_id) {
+        this.getProductAndSimilar(Project_id);
       }
     });
-  }
-
-  handleQuantity(val: string) {
-    if (this.productQuantity < 20 && val === 'plus') {
-      this.productQuantity += 1;
-    } else if (this.productQuantity > 1 && val === 'min') {
-      this.productQuantity -= 1;
-    }
   }
 
   getProductAndSimilar(id: string) {
@@ -100,8 +92,8 @@ export class ViewproductComponent implements OnInit {
     });
   }
 
-  getSimilarProducts(product_id: string) {
-    this._rest.viewproductsss(product_id).subscribe((similarData: any) => {
+  getSimilarProducts(Project_id: string) {
+    this._rest.viewproductsss(Project_id).subscribe((similarData: any) => {
       this.similarProducts = similarData;
     }, (error: any) => {
       console.error('Error fetching similar products:', error);

@@ -23,47 +23,34 @@ export class ProductsssComponent implements OnInit {
   constructor(private _rest: RestService, private fb: FormBuilder, private _router: Router, private _actvatedrute: ActivatedRoute) {
     this.ADDProduct = this.fb.group({
       status: new FormControl(false),
-      Product_Name: new FormControl('', [Validators.required]),
-      Weight: new FormControl('', [Validators.required]),
+      Project_Name: new FormControl('', [Validators.required]),
+      Location: new FormControl('', [Validators.required]),
       Price: new FormControl('', [Validators.required]),
-      // discount: new FormControl('', [Validators.required]),
-      // pricewithdiscount: new FormControl('', [Validators.required]),
-      // Brand_id: new FormControl('', [Validators.required]),
-      // Category_id: new FormControl('', [Validators.required]),
-      discountAmount: new FormControl('', [Validators.required]),
-      Brand_id: new FormControl(''),
-      Category_id: new FormControl(''),
-      Category_Name: new FormControl('', [Validators.required]),
-      Brand_Name: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      benefits: new FormControl('', [Validators.required]),
-      ingredients: new FormControl('', [Validators.required]),
+      possession: new FormControl('', [Validators.required]),
+      typology: new FormControl('', [Validators.required]),
+      information: new FormControl('', [Validators.required]),
+      nearby: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required]),
       mainimage: new FormControl('', [Validators.required]),
-      backimage: new FormControl('', [Validators.required]),
-      tableimage: new FormControl('', [Validators.required])
+      image2: new FormControl('', [Validators.required])
+
     });
 
     this.EditProductform = this.fb.group({
       id: new FormControl(),
       status: new FormControl(false),
-      Product_Name: new FormControl('', [Validators.required]),
-      Weight: new FormControl('', [Validators.required]),
+      Project_Name: new FormControl('', [Validators.required]),
+      Location: new FormControl('', [Validators.required]),
       Price: new FormControl('', [Validators.required]),
-      // discount: new FormControl('', [Validators.required]),
-      discountAmount: new FormControl('', [Validators.required]),
-      Brand_id: new FormControl(''),
-      Category_id: new FormControl(''),
-      Category_Name: new FormControl('', [Validators.required]),
-      Brand_Name: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      benefits: new FormControl('', [Validators.required]),
-      ingredients: new FormControl('', [Validators.required]),
+      possession: new FormControl('', [Validators.required]),
+      typology: new FormControl('', [Validators.required]),
+      information: new FormControl('', [Validators.required]),
+      nearby: new FormControl('', [Validators.required]),
 
       image: new FormControl(null),
       mainimage: new FormControl(null),
-      backimage: new FormControl(null),
-      tableimage: new FormControl(null)
+      image2: new FormControl(null)
+
     })
   }
 
@@ -130,7 +117,7 @@ export class ProductsssComponent implements OnInit {
       formData.append(key, this.EditProductform.get(key)?.value);
     });
     // Update form data 
-    this._rest.EditProducts(this.EditProductform.value.id, formData).subscribe(
+    this._rest.EditProducts(this.EditProductform.value.Project_id, formData).subscribe(
       response => {
         console.log('Update success', response);
         this.EditProductform.reset();
@@ -142,9 +129,9 @@ export class ProductsssComponent implements OnInit {
     );
   }
 
-  DeleteProduct(id: number) {
+  DeleteProduct(Project_id: number) {
     if (confirm('Are You  want to delete a Product..')) {
-      this._rest.DeleteProduct(id).subscribe((data: any) => {
+      this._rest.DeleteProduct(Project_id).subscribe((data: any) => {
         console.log('Delete success', data);
         this.getProducts();
       }, (err: any) => {
